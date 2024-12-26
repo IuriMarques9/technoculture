@@ -16,17 +16,17 @@ export default {
         black: '#0D0D0D',
       },
     },
-    screens: { //Media queries
-      'sm': '640px',
+      screens: { //Media queries
+        'sm': '640px',
 
-      'md': '768px',
+        'md': '768px',
 
-      'lg': '1024px',
+        'lg': '1024px',
 
-      'xl': '1280px',
+        'xl': '1280px',
 
-      '2xl': '1536px',
-    },
+        '2xl': '1536px',
+      },
   },
   plugins: [],
 } satisfies Config;
