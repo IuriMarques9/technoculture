@@ -9,12 +9,14 @@ export default function HeaderDesktop(props: { page: string }){
     
     return (
         <header className="flex w-full items-center justify-between bg-transparent p-4 h-fit gap-1">
-            <Image 
-                src={Logo} 
-                alt="TechnoCulture Logo" 
-                width={170}
-                height={170}   
-            />
+            <Link href="/">
+                <Image 
+                    src={Logo} 
+                    alt="TechnoCulture Logo" 
+                    width={170}
+                    height={170}   
+                />            
+            </Link>
 
 
             <div className="w-fit flex items-center gap-x-3">                
