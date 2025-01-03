@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../public/logo_grande.png";
 import { ShoppingCart, Heart } from "react-feather";
-import routes from "@/app/routes/routes";
+import routes from "@/lib/routes/routes";
 
 export default function HeaderDesktop(props: { page: string }){
     

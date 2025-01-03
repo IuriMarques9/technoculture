@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../public/logo_grande.png";
 import { Menu, ShoppingCart, Heart, X } from "react-feather";
-import routes from "@/app/routes/routes";
+import routes from "@/lib/routes/routes";
 
 function toogleNav(){
     const nav = document.querySelector("nav");

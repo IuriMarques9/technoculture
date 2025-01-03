@@ -1,7 +1,8 @@
 "use client"
-
+import Link from "next/link";
 export default function Footer(){
     
+
     return (
         <footer className="bg-gradient-to-b from-lightRed from-90 to-darkRed to-100 px-4 flex flex-col gap-2">
           <section>
@@ -16,9 +17,9 @@ export default function Footer(){
 
           <section>
             <div className="flex justify-around py-2">
-              <a className="text-sm">Return Policy</a>
+              <Link href="" className="hover:underline text-sm">Return Policy</Link>
 
-              <a className="text-sm">Privacy Policy</a>
+              <Link href="" className="hover:underline text-sm">Privacy Policy</Link>
             </div>
 
             <hr />
