@@ -1,27 +1,20 @@
 import mongoose from "mongoose";
 
-global.mongoose = {
-  conn: null,
-  promise:null,
+mongoose.set("strictQuery", true);
+
+const url = `mongodb+srv://admin:admin@cluster0.qib60.mongodb.net/master?retryWrites=true&w=majority&appName=Cluster0`
+
+const connect = async () => {
+  return await mongoose.connect(url)
 }
 
-export async function dbConnect() {
-  if(global.mongoose && global.mongoose.conn) {
-
-    console.log('Connected from previous');
-    return global.mongoose.conn;
-    
-  } else {
-    const connString = process.env.MONGO_URL;
-
-    const promise = mongoose.connect(connString, { autoIndex: true,});
-
-    global.mongoose = {
-      conn: await promise,
-      promise,
-    };
-    console.log('Newly connected');
-
-    return await promise
-  }
+const disconnect = async () => {
+  return await mongoose.disconnect()
 }
+
+const database = {
+  connect,
+  disconnect
+}
+
+export default database;
