@@ -46,7 +46,7 @@ export default function HeaderMobile (props: { page: string }){
             </div>
 
             
-            <nav className="h-full flex w-full bg-[rgba(0,0,0,0.5)] fixed left-0 top-0 z-50">
+            <nav className="hidden h-full flex w-full bg-[rgba(0,0,0,0.5)] fixed left-0 top-0 z-50">
                 <div className="w-[55%] bg-[#590202] fade-right flex flex-col text-end gap-y-4 ">
                     <div className="flex justify-between p-3 align-center">
                         <h3 className="font-extrabold text-lg">Home</h3>
