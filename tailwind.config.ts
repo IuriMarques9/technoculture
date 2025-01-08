@@ -7,15 +7,15 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      colors: {
-        lightRed: '#8C0303',
-        mediumRed: '#590202',
-        darkRed: '#260101',
-        white: '#F2F2F2',
-        black: '#0D0D0D',
-      },
+    colors: {
+      lightRed: '#8C0303',
+      mediumRed: '#590202',
+      darkRed: '#260101',
+      white: '#F2F2F2',
+      black: '#0D0D0D',
     },
+
+    extend: {
       screens: { //Media queries
         'sm': '640px',
 
@@ -27,6 +27,11 @@ export default {
 
         '2xl': '1536px',
       },
+
+      boxShadow: {
+        'costum': '0px 2px 16px 0px rgba(14, 30, 37, 0.7);'
+      }
+    },
   },
   plugins: [],
 } satisfies Config;
