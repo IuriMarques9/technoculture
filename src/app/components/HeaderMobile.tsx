@@ -16,7 +16,7 @@ function toogleNav(){
 export default function HeaderMobile (props: { page: string }){
 
     return (
-        <header className="flex w-full items-center justify-between bg-transparent p-4">
+        <header id="Header" className="flex w-full items-center justify-between bg-transparent p-4">
             <Menu 
                 color="darkRed" 
                 size={25}

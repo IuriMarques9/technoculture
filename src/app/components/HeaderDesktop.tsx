@@ -8,7 +8,7 @@ export default function HeaderDesktop(props: { page: string }){
     
     
     return (
-        <header className="flex w-full items-center justify-between bg-transparent p-4 h-fit gap-1">
+        <header id="Header" className="flex w-full items-center justify-between bg-transparent p-4 h-fit gap-1">
             <Link href="/">
                 <Image 
                     src={Logo} 

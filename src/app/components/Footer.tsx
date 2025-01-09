@@ -6,8 +6,7 @@ import { useState } from "react";
 export default function Footer(){
   const [showAlert, setShowAlert] = useState(false);
   const [alertType, setAlertType] = useState("success");
-  
- 
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,23 +52,26 @@ export default function Footer(){
         <Alert title="Newsletter" type={alertType}/>
       }
 
-      <section className="flex flex-col gap-1 py-4">
-        <h2>Newsletter</h2>
+      <div className="max-w-screen-2xl mx-auto w-full">
+        <section className="flex flex-col gap-1 py-4">
+          <h2>Newsletter</h2>
+            
+          <p className="text-lg">Subscribe to our newsletter to stay up to date with the latest events and discounts.</p>
+
+          <form className="flex flex-col sm:flex-row gap-3" onSubmit={handleSubmit}>
+            <input className="sm:w-3/4 shadow-inner bg-[rgba(38,1,1,0.2)] w-full indent-2 py-1 rounded-sm sm:w-full md:text-base lg:text-md xl:text-lg md:placeholder:text-base lg:placeholder:text-md xl:placeholder:text-lg" placeholder="Email" type="email" required/>
           
-        <p className="text-lg">Subscribe to our newsletter to stay up to date with the latest events and discounts.</p>
+            <button className="md:text-md lg:text-lg sm:w-1/4 p-2 shadow-inner rounded-sm text-center bg-[rgba(38,1,1,0.2)] w-full" type="submit">
+              <Loader id="loader" size={17} className="hidden animate-spin inline mr-2"/> 
+              <span className="align-middle">Subscribe</span>
+            </button>
+          </form>
 
-        <form className="flex flex-col sm:flex-row gap-3" onSubmit={handleSubmit}>
-          <input className="sm:w-3/4 shadow-inner bg-[rgba(38,1,1,0.2)] w-full indent-2 py-1 rounded-sm sm:w-full md:text-base lg:text-md xl:text-lg md:placeholder:text-base lg:placeholder:text-md xl:placeholder:text-lg" placeholder="Email" type="email" required/>
-        
-          <button className="md:text-[1.125rem] lg:text-[1.25rem] sm:w-1/4 shadow-inner rounded-sm text-center bg-[rgba(38,1,1,0.2)] w-full" type="submit">
-            <Loader id="loader" size={17} className="hidden animate-spin inline mr-2"/> 
-            <span className="align-middle">Subscribe</span>
-          </button>
-        </form>
+          <p className="text-sm">By clicking Subscribe, you agree with our <Link href="" className="underline hover:text-lightRed">Terms and Conditions</Link>.</p>
 
-        <p className="text-sm">By clicking Subscribe, you agree with our <Link href="" className="underline hover:text-lightRed">Terms and Conditions</Link>.</p>
+        </section>
 
-      </section>
+      </div>
 
       <section>
         <div className="flex justify-around py-2">
@@ -78,7 +80,7 @@ export default function Footer(){
         </div>
 
         <hr />
-
+        
         <p className="text-center text-xs py-2">&#169; 2025 By TechnoCulture Portugal</p>
       </section>
     </footer>

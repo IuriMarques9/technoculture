@@ -17,13 +17,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+          <header className="fixed w-full top-0">
+            <Headers />
+          </header>
 
-        <Headers />
+          {children}
 
-        {children}
-
-        <Footer />
-
+          <Footer />
       </body>
     </html>
   );

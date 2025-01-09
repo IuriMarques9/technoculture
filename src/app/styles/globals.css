@@ -23,6 +23,7 @@
   text-decoration: none;
   list-style: none;
 }
+
 html, body {
   min-width: 300px;
   overflow-x: hidden; /* Evita scroll horizontal indesejado */
@@ -30,7 +31,8 @@ html, body {
 
 body {
   color: var(--text-color);
-  background: var(--background);
+  background: url('../../../public/hero.jpg') var(--background) center no-repeat fixed;
+  background-size: contain;
   font-family: 'Gemunu Libre', sans-serif;
   letter-spacing: 0.4;
 }
