@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-          <header className="fixed w-full top-0">
+          <header className="fixed w-full top-0 z-50">
             <Headers />
           </header>
 
