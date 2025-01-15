@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 
-interface NextEvents {
+interface Events {
     title: string;
     url: string; // URL da imagem
     date: Date; // Data da evento
@@ -42,14 +42,17 @@ export default function Caroussel() {
         prevArrow: <CustomPrevArrow />,
     };
     
-    const [nextEvents, setNextEvents] = useState<NextEvents[]>([]); // Estado para armazenar os eventos
+    const [nextEvents, setNextEvents] = useState<Events[]>([]); //Estado para armazenar os proximos eventos
     useEffect(() => {
         // Função para buscar os dados
         const fetchEvents = async () => {
           try {
-            const response = await fetch("/api/nextEvents"); // Substituir pelo endpoint correto
+            const response = await fetch("/api/events"); // Substituir pelo endpoint correto
             const data = await response.json();
-            setNextEvents(data); // Atualizar estado com os eventos
+
+            const currentDate = new Date(); //Data atual
+
+            setNextEvents(data.filter((event: Events) => new Date(event.date) >= currentDate)); //Atualiza os estados dos proximos eventos
           } catch (error) {
             console.error("Erro ao buscar eventos:", error);
           }
@@ -79,7 +82,7 @@ return nextEvents.length > 0 ? (
                 ))
             }
         </Slider>
-  ) : (<p>No Events</p>);
+    ) : (<p>No Events</p>);
 }
 
 

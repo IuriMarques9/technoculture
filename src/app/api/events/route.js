@@ -1,13 +1,13 @@
 import connectMongoDB from '../../../lib/dbConnect';
 import { NextResponse } from 'next/server';
-import NextEvents from '../../../Models/NextEvents';
+import Events from '../../../Models/Events';
 
 export async function GET() {
     try{
         await connectMongoDB();
 
         //Find all events
-        const data = await NextEvents.find();
+        const data = await Events.find();
 
         return NextResponse.json(data);
     }catch (error) {

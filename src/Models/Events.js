@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
-const nextEventsSchema = new Schema(
+const eventsSchema = new Schema(
   {
     title: { type: String},
     url: {type: String},
@@ -10,6 +10,6 @@ const nextEventsSchema = new Schema(
 );
 
 //O terceiro parametro refere-se à tabela do banco de dados
-const NextEvents = mongoose.models.NextEvents || mongoose.model('nextEvents', nextEventsSchema, 'nextEvents');
+const Events = mongoose.models.NextEvents || mongoose.model('events', eventsSchema, 'events');
 
-export default NextEvents;
+export default Events;
