@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "../../../public/logo_grande.png";
+import Logo from "../../public/logo_grande.png";
 import { Menu, ShoppingCart, Heart, X } from "react-feather";
-import routes from "@/app/lib/routes";
+import routes from "@/lib/routes";
 
 function toogleNav(){
     const nav = document.querySelector("nav");

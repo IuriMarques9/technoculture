@@ -31,7 +31,7 @@ html, body {
 
 body {
   color: var(--text-color);
-  background: url('../../../public/hero.jpg') var(--background) center no-repeat fixed;
+  background: url('../../public/hero.jpg') var(--background) center no-repeat fixed;
   background-size: contain;
   font-family: 'Gemunu Libre', sans-serif;
   letter-spacing: 0.4;

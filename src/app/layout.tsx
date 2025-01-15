@@ -1,7 +1,7 @@
-import "@/app/styles/globals.css";
+import "../styles/globals.css"
 import type { Metadata } from "next";
-import Headers from "@/app/components/Headers";
-import Footer from "@/app/components/Footer";
+import Headers from "@/components/Headers";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "TechnoCulture",
