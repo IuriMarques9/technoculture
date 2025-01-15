@@ -52,7 +52,11 @@ export default function Caroussel() {
 
             const currentDate = new Date(); //Data atual
 
-            setNextEvents(data.filter((event: Events) => new Date(event.date) >= currentDate)); //Atualiza os estados dos proximos eventos
+            const filteredEvents = data.filter((event: Events) => new Date(event.date) >= currentDate);
+            const sortedEvents = filteredEvents.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+            
+            setNextEvents(sortedEvents); //Atualiza os estados dos proximos eventos
+
           } catch (error) {
             console.error("Erro ao buscar eventos:", error);
           }

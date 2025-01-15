@@ -12,17 +12,19 @@ interface Events {
 
 export default function GalleryCollections() {
 
-  const [passedEvents, setPassedEvents] = useState<Events[]>([]); // Estado para armazenar os eventos
+  const [eventCollections, setEventCollections] = useState<Events[]>([]); // Estado para armazenar os eventos
   useEffect(() => {
     // Função para buscar os dados
     const fetchEvents = async () => {
       try {
         const response = await fetch("/api/events"); // Substituir pelo endpoint correto
         const data = await response.json();
-        
+                
         const currentDate = new Date(); //Data atual
-        
-        setPassedEvents(data.filter((event: Events) => new Date(event.date) <= currentDate)); // Atualizar estado com os eventos
+
+        const passedEvents = data.filter((event: Events) => new Date(event.date) <= currentDate)
+        const sortedEvents = passedEvents.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0,3);
+        setEventCollections(sortedEvents); // Atualizar estado com os eventos
 
       } catch (error) {
         console.error("Erro ao buscar eventos:", error);
@@ -32,10 +34,10 @@ export default function GalleryCollections() {
     fetchEvents();
   }, []);
 
-return passedEvents.length > 0 ? (
+return eventCollections.length > 0 ? (
         <div className="mx-auto my-7 px-16 flex justify-evenly gap-10">
             {
-                passedEvents.map((event) => (
+                eventCollections.map((event) => (
                   <Link key={event.title} href={event.link}>
                   <div className={`hover:opacity-50 transition ease-in-out duration-500`}>
                       <Image
