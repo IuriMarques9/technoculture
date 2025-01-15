@@ -1,21 +1,38 @@
 "use client"
 
+import { useEffect, useState } from "react";
+
+interface GalleryPictures {
+    partyDate: string; //Party date
+    url: string; // URL da imagem
+}
 export default function GalleryImages() {
     
-    /*const galleryCollections = [
-        { title: "Festa x", image: "/nextEvents/cartaz_1st_year.jpg" },
-        { title: "Festa y", image: "/nextEvents/cartaz_lagoa_FIMEL.jpg" },
-        { title: "Festa z", image: "/nextEvents/cartaz_olhao.jpg"},
-        { title: "Festa a", image: "/nextEvents/cartaz_1st_year.jpg"},
-       
-    ];
-*/
+    const [galleryPictures, setGalleryPictures] = useState<GalleryPictures[]>([]); // Estado para armazenar os eventos
+        useEffect(() => {
+            // Função para buscar os dados
+            const fetchPictures = async () => {
+              try {
+                const response = await fetch("/api/galleryPictures"); // Substituir pelo endpoint correto
+                const data = await response.json();
+                setGalleryPictures(data); // Atualizar estado com os eventos
+              } catch (error) {
+                console.error("Erro ao buscar eventos:", error);
+              }
+            };
+        
+            fetchPictures();
+        }, []);
 
 return (
-    <div className="mx-auto my-7 px-16 flex justify-evenly gap-10">
-        {
-
-        }
-    </div>
+    <>
+        <div className="mx-auto my-7 px-16 flex justify-evenly gap-10">
+            {
+                galleryPictures.map((picture) => (
+                    console.log("Festa:", picture.partyDate, "URL:", picture.url),
+                ))
+            }
+        </div>
+    </>
   );
 }
