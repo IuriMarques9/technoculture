@@ -5,8 +5,6 @@ import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Loader from "./LoadingPage";
-import { ChildProps } from "postcss";
 
 
 interface Events {
