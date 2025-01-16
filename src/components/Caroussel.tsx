@@ -24,7 +24,7 @@ export default function Caroussel() {
         slidesToScroll: 1, // Quantidade de slides que movem a cada clique
         responsive: [ // Configurações responsivas
             {
-                breakpoint: 640, // Breakpoint para telas menores que 768px
+                breakpoint: 640, // Breakpoint para telas menores que 640px
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
@@ -68,17 +68,16 @@ export default function Caroussel() {
 return nextEvents.length > 0 ? (
         <Slider {...settings}>
             {
-            // Events array
+                // Events array
                 nextEvents.map((event) => (    
                     <Link key={event.title} href={event.link}>
                         <div className={`hover:opacity-50 transition ease-in-out duration-500`}>
                             <Image
                                 src={event.url}
                                 alt={"Event Image"}
-                                height={700}
-                                width={700}
-                                style={{ height: '18em' }}
-                                objectFit="cover"
+                                height={500}
+                                width={500}
+                                className="max-h-[400px] w-full object-contain"
                                 priority 
                             />
                         </div>

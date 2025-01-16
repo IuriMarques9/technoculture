@@ -14,9 +14,11 @@ export default function page() {
       <section className="p-4 bg-[rgba(13,13,13,0.1)] backdrop-blur-sm">
         <div className="max-w-screen-2xl mx-auto py-4 text-center">
           <h2 className="font-semibold">Next Events</h2>
+
           <div className="mx-auto my-7 px-16">
             <Caroussel />
           </div>
+          
         </div>
       </section>
 
@@ -46,10 +48,13 @@ export default function page() {
       </section>
 
       <section className="p-4 bg-[rgba(13,13,13,0.1)] backdrop-blur-sm">
-        <div className="max-w-screen-2xl mx-auto py-4 text-center">
+        <div className="max-w-screen-2xl mx-auto mb-3 py-4 text-center">
           <h2 className="font-semibold">Gallery</h2>
+
+          <div className="mx-auto my-7 px-16">
             <GalleryCollections />
-            
+          </div>
+
         </div>
       </section>
 
