@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
+import { ChildProps } from "postcss";
 
 interface Events {
     title: string;
@@ -11,7 +12,7 @@ interface Events {
     link: string; // Link para o evento
 }
 
-export default function GalleryCollections() {
+export default function GalleryCollections( {childToParentCollections} ) {
 
   const [eventCollections, setEventCollections] = useState<Events[]>([]); // Estado para armazenar os eventos
   useEffect(() => {
@@ -29,6 +30,8 @@ export default function GalleryCollections() {
 
       } catch (error) {
         console.error("Erro ao buscar eventos:", error);
+      } finally{
+        childToParentCollections(false)
       }
     };
             

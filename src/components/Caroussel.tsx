@@ -5,6 +5,8 @@ import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Loader from "./LoadingPage";
+import { ChildProps } from "postcss";
 
 
 interface Events {
@@ -14,7 +16,7 @@ interface Events {
     link: string; // Link para o evento
 
 }
-export default function Caroussel() {
+export default function Caroussel( {childToParentNextEvents } ) {
     
     const settings = {
         dots: true, // Mostrar os indicadores (bolinhas)
@@ -57,9 +59,12 @@ export default function Caroussel() {
             
             setNextEvents(sortedEvents); //Atualiza os estados dos proximos eventos
 
-          } catch (error) {
+            
+        } catch (error) {
             console.error("Erro ao buscar eventos:", error);
-          }
+        } finally{
+            childToParentNextEvents(false)
+        }
         };
     
         fetchEvents();
