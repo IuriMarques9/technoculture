@@ -28,7 +28,7 @@ export default function page() {
   
   }, [nextEventsdata, collectionsData]);
 
-  useEffect(()=> {
+  useEffect(()=> { // Verifica se a carregar alguma coisa e esconde ou mostra a scrollbar
     if(isLoading) {
       document.documentElement.style.overflow = "hidden"
     }else {
