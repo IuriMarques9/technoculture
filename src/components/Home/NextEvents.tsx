@@ -14,7 +14,7 @@ interface Events {
     link: string; // Link para o evento
 
 }
-export default function Caroussel( {childToParentNextEvents } ) {
+export default function NextEvents( {childToParentNextEvents } ) {
     
     const settings = {
         dots: true, // Mostrar os indicadores (bolinhas)

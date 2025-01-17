@@ -57,7 +57,9 @@ export default function GalleryCollections( {childToParentCollections} ) {
             },
         },
     ],
-    arrows:false
+    arrows:false,
+    swipe: false, // Desativa o deslizar em dispositivos móveis
+    draggable: false, // Desativa o arrastar em desktops
   };
 
   return eventCollections.length > 0 ? (
