@@ -3,6 +3,7 @@ import Link from "next/link";
 import {Loader} from "react-feather";
 import Alert from "@/components/Alert";
 import { useState } from "react";
+
 export default function Footer(){
   const [showAlert, setShowAlert] = useState(false);
   const [alertType, setAlertType] = useState("success");
@@ -17,7 +18,7 @@ export default function Footer(){
     document.querySelector('#loader')?.classList.remove('hidden'); //Show loader when form is submitted to DB
 
     try{
-      await fetch('/api/newsletter', {
+      const resp = await fetch('/api/newsletter', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -25,13 +26,18 @@ export default function Footer(){
         body: JSON.stringify({email}),
       });
 
-      setAlertType("success");
-      setShowAlert(true); //Show alert when form is submitted to DB
+      if(resp.ok) {
+        setAlertType("success");
+      } else{
+        setAlertType("error");
+      }
+
     } catch (error) {
       console.log('Erro ao conectar ao servidor.');
       console.error('Erro:', error);
     } finally{
       document.querySelector('#loader')?.classList.add('hidden'); //Hide loader finished
+      setShowAlert(true); //Show alert when form is submitted to DB
     }
   } 
 
@@ -39,8 +45,7 @@ export default function Footer(){
     <footer className="bg-gradient-to-b from-lightRed from-90 to-darkRed to-100 px-4 flex flex-col">
 
       {
-        showAlert && 
-        <Alert title="Newsletter" type={alertType}/>
+        showAlert ? (<Alert title="Newsletter" type={alertType}/>) : null
       }
 
       <div className="max-w-screen-2xl mx-auto w-full">

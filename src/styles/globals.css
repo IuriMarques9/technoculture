@@ -33,7 +33,7 @@ html, body {
 body {
   color: var(--text-color);
   background: url('../../public/hero.jpg') var(--background) center no-repeat fixed;
-  background-size: contain;
+  background-size: cover;
   font-family: 'Gemunu Libre', sans-serif;
   letter-spacing: 0.4;
 }
@@ -103,7 +103,7 @@ h6{
 @keyframes slide-top {
   0% {top: -100px;}
   70% {top: 60px;}
-  100% {top: 30px;}
+  100% {top: 50px;}
 }
 
 /*Alert component classes*/

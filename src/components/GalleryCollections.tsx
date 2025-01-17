@@ -72,7 +72,7 @@ export default function GalleryCollections( {childToParentCollections} ) {
                       alt={"Event Image"}
                       height={500}
                       width={500}
-                      className="max-h-[400px] w-full object-contain"
+                      className="max-h-[300px] w-full object-contain"
                       priority 
                     />
                 </Link>
@@ -80,7 +80,7 @@ export default function GalleryCollections( {childToParentCollections} ) {
           }
         </Slider>
           
-        <div className="z-10 shadow-[inset_0_-80px_80px_-70px_rgba(90,2,2,1)] absolute w-[90%] h-full rounded-xl bottom-12 left-2/4 -translate-x-2/4"></div>
+        <div className="max-w-screen-2xl z-10 shadow-[inset_0_-80px_80px_-70px_rgba(90,2,2,1)] absolute w-[90%] h-full rounded-xl bottom-12 left-2/4 -translate-x-2/4"></div>
 
         <a href="#" className="transition ease-in-out duration-125 hover:scale-110 z-30 absolute left-2/4 -translate-x-2/4 bottom-7 py-2 px-9 tracking-widest bg-mediumRed text-white text-sm font-semibold rounded-lg shadow-lg shadow-indigo-500/50 focus:outline-none">
           See More

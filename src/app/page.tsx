@@ -2,6 +2,7 @@
 import LoadingPage from "@/components/LoadingPage";
 import Caroussel from "../components/Caroussel";
 import GalleryCollections from "../components/GalleryCollections";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function page() {
@@ -47,7 +48,7 @@ export default function page() {
 
       <section className="p-4 bg-[rgba(13,13,13,0.1)] backdrop-blur-sm">
         <div className="max-w-screen-2xl mx-auto py-4 text-center">
-          <h2 className="font-semibold">Next Events</h2>
+          <h2 className="font-semibold xl:text-6xl">Next Events</h2>
 
           <div className="mx-auto my-7 px-16">
             <Caroussel childToParentNextEvents={childToParentNextEvents} />
@@ -58,23 +59,23 @@ export default function page() {
 
       <section className="bg-mediumRed">
 
-        <div className="max-w-screen-2xl mx-auto w-full p-4 sm:px-12 sm:py-20 w-full flex flex-col sm:flex-row gap-6 justify-between items-center">
+        <div className="max-w-screen-2xl py-8 mx-auto w-full p-4 sm:px-12 sm:py-20 w-full flex flex-col sm:flex-row gap-6 justify-between items-center">
           
-          <div className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl">
-              <h3>+129.090</h3>
-              <h3>Followers on social media</h3>
+          <div>
+              <h3 className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">+129.090</h3>
+              <h3 className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">Followers on social media</h3>
           </div>
-          <div className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl">
-              <h3>+100</h3>
-              <h3>DJ's Performed at our events</h3>
+          <div>
+              <h3 className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">+100</h3>
+              <h3 className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">DJ's Performed at our events</h3>
           </div>
-          <div className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl">
-              <h3>14</h3>
-              <h3>Partners/Sponsors</h3>
+          <div>
+              <h3 className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">14</h3>
+              <h3 className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">Partners/Sponsors</h3>
           </div>
-          <div className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl">
-              <h3>+200</h3>
-              <h3>Events Organized</h3>
+          <div>
+              <h3 className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">+200</h3>
+              <h3 className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">Events Organized</h3>
           </div>
 
         </div>
@@ -83,13 +84,46 @@ export default function page() {
 
       <section className="p-4 bg-[rgba(13,13,13,0.1)] backdrop-blur-sm">
         <div className="max-w-screen-2xl mx-auto mb-3 py-4 text-center">
-          <h2 className="font-semibold">Gallery</h2>
+          <h2 className="font-semibold xl:text-6xl">Gallery</h2>
 
           <div className="mx-auto my-7 px-16">
             <GalleryCollections childToParentCollections={childToParentCollections}/>
           </div>
 
         </div>
+      </section>
+
+      <section className="bg-mediumRed">
+
+        <div className="max-w-screen-2xl py-8 mx-auto w-full p-4 sm:px-12 sm:py-10 w-full flex flex-col sm:flex-row gap-10 justify-between items-center">
+          
+          <Image
+              src={"/chroma.png"}
+              alt={"Event Image"}
+              height={200}
+              width={200}
+              className="sm:max-w-[400px] max-w-[200px] w-full object-contain"
+              priority 
+          />
+          <Image
+              src={"/nomadas.png"}
+              alt={"Event Image"}
+              height={200}
+              width={200}
+              className="sm:max-w-[400px] max-w-[200px] w-full object-contain"
+              priority 
+          />
+          <Image
+              src={"/logo_grande.png"}
+              alt={"Event Image"}
+              height={200}
+              width={200}
+              className="sm:max-w-[400px] max-w-[200px] w-full object-contain"
+              priority 
+          />
+
+        </div>
+
       </section>
 
     </main>

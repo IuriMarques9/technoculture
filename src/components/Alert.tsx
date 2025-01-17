@@ -32,7 +32,7 @@ export default function Alert({title, message, type}: AlertProps) {
     }
     
   return (
-    <div id="Alert" className={`alert-${type} flex justify-between shadow-costum w-3/4 h-fit bg-white text-black p-4 rounded-md absolute top-10 left-2/4 -translate-x-2/4`}>
+    <div id="Alert" className={`alert-${type} z-50 flex justify-between shadow-costum w-3/4 h-fit bg-white text-black p-4 rounded-md fixed top-10 left-2/4 -translate-x-2/4`}>
         <div className="w-full">
             <h2>{title}</h2>
             <p>{message}</p>
