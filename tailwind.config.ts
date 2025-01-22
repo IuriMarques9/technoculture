@@ -1,11 +1,21 @@
+import GalleryCollections from "@/components/Home/GalleryCollections";
 import type { Config } from "tailwindcss";
 
 export default {
+  
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    'bg-red',
+    'bg-black',
+    'bg-yellow',
+    'bg-white',
+    // Adicionar todas as cores possíveis aqui
+  ],
+
   theme: {
     colors: {
       lightRed: '#8C0303',
@@ -13,6 +23,9 @@ export default {
       darkRed: '#260101',
       white: '#F2F2F2',
       black: '#0D0D0D',
+      red: '#c71c1c',
+      yellow: '#F7DC6F',
+      gray: '#ABABAB'
     },
 
     extend: {

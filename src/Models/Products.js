@@ -7,6 +7,7 @@ const productsSchema = new Schema(
     description: {type: String},
     sales: {type: Number},
     url: {type: String},
+    colors:{type: Object},
   }
 );
 
