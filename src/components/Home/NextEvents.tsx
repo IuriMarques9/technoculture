@@ -74,14 +74,14 @@ return nextEvents.length > 0 ? (
                 // Events array
                 nextEvents.map((event) => (    
                     <Link key={event.title} href={event.link}>
-                        <div className={`hover:opacity-50 transition ease-in-out duration-500`}>
+                        <div className={`hover:brightness-75 transition ease-in-out duration-500`}>
                             <Image
                                 src={event.url}
                                 alt={"Event Image"}
                                 height={500}
                                 width={500}
                                 className="max-h-[400px] w-full object-contain"
-                                priority 
+                                priority
                             />
                         </div>
                     </Link>

@@ -22,21 +22,22 @@ export default function HeaderMobile (props: { page: string }){
                 size={25}
                 className="hover:scale-125 hover:cursor-pointer transition-transform"
                 onClick={toogleNav}
-                />
+            />
 
             <Image 
                 src={Logo} 
                 alt="TechnoCulture Logo" 
-                width={170}
-                height={170}   
-                />
+                width={200}
+                height={200}
+                className="w-2/4 max-w-[200px]"   
+            />
         
             <div className="flex gap-2">
                 <ShoppingCart 
                     color="darkRed" 
                     size={25}
                     className="hover:scale-125 hover:cursor-pointer transition-transform"
-                    />
+                />
         
                 <Heart 
                     color="darkRed" 

@@ -68,14 +68,14 @@ export default function GalleryCollections( {childToParentCollections} ) {
           {
               // Events array
               eventCollections.map((event) => (
-                <Link key={event.title} className={`hover:opacity-50 transition ease-in-out duration-500`} href={event.link}>
+                <Link key={event.title} className={`hover:brightness-75 transition ease-in-out duration-500`} href={event.link}>
                     <Image
                       src={event.url}
                       alt={"Event Image"}
                       height={500}
                       width={500}
                       className="max-h-[300px] w-full object-contain"
-                      priority 
+                      priority
                     />
                 </Link>
               ))

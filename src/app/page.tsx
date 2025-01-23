@@ -64,23 +64,23 @@ export default function page() {
 
       <section className="bg-mediumRed">
 
-        <div className="max-w-screen-2xl py-8 mx-auto w-full p-4 sm:px-12 sm:py-20 w-full flex flex-col sm:flex-row gap-6 justify-between items-center">
+        <div className="max-w-screen-2xl py-8 mx-auto w-full p-4 sm:px-12 sm:py-12 w-full flex flex-col sm:flex-row gap-6 justify-between items-center">
           
           <div>
-              <h3 className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">+129.090</h3>
-              <h3 className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">Followers on social media</h3>
+              <h3 className="text-center font-bold text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">+129.090</h3>
+              <h3 className="text-center font-bold text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">Followers on social media</h3>
           </div>
           <div>
-              <h3 className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">+100</h3>
-              <h3 className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">Dj&apos;s Performed at our events</h3>
+              <h3 className="text-center font-bold text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">+100</h3>
+              <h3 className="text-center font-bold text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">Dj&apos;s Performed at our events</h3>
           </div>
           <div>
-              <h3 className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">14</h3>
-              <h3 className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">Partners/Sponsors</h3>
+              <h3 className="text-center font-bold text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">14</h3>
+              <h3 className="text-center font-bold text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">Partners/Sponsors</h3>
           </div>
           <div>
-              <h3 className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">+200</h3>
-              <h3 className="text-center font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">Events Organized</h3>
+              <h3 className="text-center font-bold text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">+200</h3>
+              <h3 className="text-center font-bold text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">Events Organized</h3>
           </div>
 
         </div>
@@ -99,31 +99,28 @@ export default function page() {
       </section>
 
       <section className="bg-mediumRed">
-        <div className="max-w-screen-2xl py-8 mx-auto w-full p-4 sm:px-12 sm:py-10 w-full flex flex-col sm:flex-row gap-10 justify-between items-center">
+        <div className="max-w-screen-2xl py-8 mx-auto w-full p-4 sm:px-12 sm:py-12 flex flex-col sm:flex-row gap-8 sm:gap-0 justify-around items-center">
           
           <Image
             src={"/chroma.png"}
             alt={"Event Image"}
-            height={200}
-            width={200}
-            className="sm:max-w-[400px] max-w-[200px] w-full object-contain"
-            priority 
+            height={180}
+            width={180}
+            className="max-w-[200px] object-contain"
           />
           <Image
             src={"/nomadas.png"}
             alt={"Event Image"}
-            height={200}
-            width={200}
-            className="sm:max-w-[400px] max-w-[200px] w-full object-contain"
-            priority 
+            height={180}
+            width={180}
+            className="max-w-[200px] object-contain"
           />
           <Image
             src={"/logo_grande.png"}
             alt={"Event Image"}
-            height={200}
-            width={200}
-            className="sm:max-w-[400px] max-w-[200px] w-full object-contain"
-            priority 
+            height={180}
+            width={180}
+            className="max-w-[200px] object-contain"
           />
 
         </div>
@@ -133,7 +130,7 @@ export default function page() {
         <div className="max-w-screen-2xl mx-auto mb-3 py-4 text-center">
           <h2 className="font-semibold xl:text-6xl">Best Sellers</h2>
 
-          <div className="mx-auto my-7 px-16">
+          <div className="mx-auto my-7 px-5">
             <BestSellers childToParentBestSellers={childToParentBestSellers}/>
           </div>
 
