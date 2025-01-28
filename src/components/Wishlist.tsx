@@ -15,7 +15,6 @@ export default function Wishlist(){
     const [wishlist, setWishlist] = useState(localStorage.getItem('wishlist'));
 
     
-    console.log(wishlist)
     return (
         <div className="absolute animate-[fade-right_1s_ease-in-out] top-0 right-0 w-2/4 bg-lightRed">
             <X

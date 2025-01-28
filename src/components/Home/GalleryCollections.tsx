@@ -1,43 +1,17 @@
 "use client"
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import Slider from "react-slick";
-import { ChildProps } from "postcss";
+import { Event } from "@/Interfaces/Event";
+
 
 interface Events {
-    title: string;
-    url: string; // URL da imagem
-    date: Date; // Data da evento
-    link: string; // Link para o evento
+  events: Event[];  // Tipagem da prop 'events' como um array de objetos 'Event'
 }
 
-export default function GalleryCollections( {childToParentCollections} ) {
+export default function GalleryCollections( eventCollections: Events ) {
 
-  const [eventCollections, setEventCollections] = useState<Events[]>([]); // Estado para armazenar os eventos
-  useEffect(() => {
-    // Função para buscar os dados
-    const fetchEvents = async () => {
-      try {
-        const response = await fetch("/api/events"); // Substituir pelo endpoint correto
-        const data = await response.json();
-                
-        const currentDate = new Date(); //Data atual
-
-        const passedEvents = data.filter((event: Events) => new Date(event.date) <= currentDate)
-        const sortedEvents = passedEvents.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0,3);
-        setEventCollections(sortedEvents); // Atualizar estado com os eventos
-
-      } catch (error) {
-        console.error("Erro ao buscar eventos:", error);
-      } finally{
-        childToParentCollections(false)
-      }
-    };
-            
-    fetchEvents();
-  }, []);
-
+  
   const settings = {
     dots: false, // Mostrar os indicadores (bolinhas)
     infinite: false, // Loop infinito
@@ -62,12 +36,12 @@ export default function GalleryCollections( {childToParentCollections} ) {
     draggable: false, // Desativa o arrastar em desktops
   };
 
-  return eventCollections.length > 0 ? (
+  return eventCollections.events.length > 0 ? (
       <>
         <Slider {...settings} className="z-30">
           {
               // Events array
-              eventCollections.map((event) => (
+              eventCollections.events.map((event) => (
                 <Link key={event.title} className={`hover:brightness-75 transition ease-in-out duration-500`} href={event.link}>
                     <Image
                       src={event.url}

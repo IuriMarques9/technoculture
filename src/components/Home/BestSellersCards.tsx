@@ -1,18 +1,9 @@
 "use client"
+import { Product } from "@/Interfaces/Product";
 import Image from "next/image";
-import { stringify } from "querystring";
 import {useState } from "react";
 import  {Heart} from 'react-feather';
 
-interface Product {
-    _id: string;
-    title: string,
-    price: number,
-    description: string,
-    sales:  number,
-    url:  string,
-    colors: object
-}
 export default function BestSellersCards( {product} : { product: Product } ) {
   
     const [colorSelected, setColorSelected] = useState(0);

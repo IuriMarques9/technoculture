@@ -1,45 +1,15 @@
-"use client"
-import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import BestSellersCards from "./BestSellersCards";
+import { Product } from "@/Interfaces/Product";
 
-interface Products {
-    _id: string,
-    title: string,
-    price: number,
-    description: string,
-    sales:  number,
-    url:  string,
-    colors: object
+interface BestSellers {
+  products: Product[];  // Tipagem da prop 'products' como um array de objetos 'Product'
 }
 
-export default function BestSellers( {childToParentBestSellers} ) {
+export default function BestSellers( bestSellers: BestSellers ) {
   
   
-  const [bestSellers, setBestSellers] = useState<Products[]>([]); // Estado para armazenar os eventos
-  useEffect(() => {
-    // Função para buscar os dados
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("/api/products"); // Substituir pelo endpoint correto
-        const data = await response.json();
-      
-        const bestSellers = data.sort((a, b) => b.sales - a.sales).slice(0,3); // Pegar os 3 melhores vendas e ordenar por ordem decrescente
-        
-        setBestSellers(bestSellers); // Atualizar estado com os eventos
-
-      } catch (error) {
-        console.error("Erro ao buscar eventos:", error);
-      } finally{
-        childToParentBestSellers(false)
-      }
-    };
-            
-    fetchProducts();
-  }, []);
-
   
-
   const settings = {
     dots: false, // Mostrar os indicadores (bolinhas)
     infinite: false, // Loop infinito
@@ -64,14 +34,14 @@ export default function BestSellers( {childToParentBestSellers} ) {
   draggable: false, // Desativa o arrastar em desktops
   };
 
-  return bestSellers.length > 0 ? (
+  return bestSellers.products.length > 0 ? (
         <Slider {...settings} className="z-30">
-            {
-                // Events array
-                bestSellers.map((product) => (
-                  <BestSellersCards key={product.title} product={product} />
-                ))
-            }
+          {
+            // Events array
+            bestSellers.products.map((product) => (
+              <BestSellersCards key={product._id} product={product} />
+            ))
+          }
         </Slider>
   ) : (<p>No Products</p>);
   }

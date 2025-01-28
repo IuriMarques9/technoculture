@@ -4,17 +4,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-
+import { Event } from "@/Interfaces/Event";
 
 interface Events {
-    title: string;
-    url: string; // URL da imagem
-    date: Date; // Data da evento
-    link: string; // Link para o evento
-
+  events: Event[];  // Tipagem da prop 'events' como um array de objetos 'Event'
 }
-export default function NextEvents( {childToParentNextEvents } ) {
+
+export default function NextEvents( nextEvents: Events ) {
     
     const settings = {
         dots: true, // Mostrar os indicadores (bolinhas)
@@ -42,38 +38,14 @@ export default function NextEvents( {childToParentNextEvents } ) {
         prevArrow: <CustomPrevArrow />,
     };
     
-    const [nextEvents, setNextEvents] = useState<Events[]>([]); //Estado para armazenar os proximos eventos
-    useEffect(() => {
-        // Função para buscar os dados
-        const fetchEvents = async () => {
-          try {
-            const response = await fetch("/api/events"); // Substituir pelo endpoint correto
-            const data = await response.json();
 
-            const currentDate = new Date(); //Data atual
-
-            const filteredEvents = data.filter((event: Events) => new Date(event.date) >= currentDate);
-            const sortedEvents = filteredEvents.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-            
-            setNextEvents(sortedEvents); //Atualiza os estados dos proximos eventos
-
-            
-        } catch (error) {
-            console.error("Erro ao buscar eventos:", error);
-        } finally{
-            childToParentNextEvents(false)
-        }
-        };
     
-        fetchEvents();
-    }, []);
-    
-return nextEvents.length > 0 ? (
+return nextEvents.events.length > 0 ? (
         <Slider {...settings}>
             {
                 // Events array
-                nextEvents.map((event) => (    
-                    <Link key={event.title} href={event.link}>
+                nextEvents.events.map((event) => (    
+                    <Link key={event._id} href={event.link}>
                         <div className={`hover:brightness-75 transition ease-in-out duration-500`}>
                             <Image
                                 src={event.url}
