@@ -25,14 +25,14 @@ export default function HeaderDesktop(props: { page: string }){
                     routes.map((routes) => {
                         if(routes.path === props.page){ //If its the current page, decoration in button
                             return (
-                            <div key={routes.path} className=" decoration-white underline text-xs px-3 py-1 w-fit uppercase tracking-widest transition-all duration-500 ease-in-out border-2 border-[#260101] flex justify-center items-center">
+                            <div key={routes.path} className="bg-darkRed/20 decoration-white underline text-xs px-3 py-1 w-fit uppercase tracking-widest transition-all duration-500 ease-in-out border-2 border-darkRed flex justify-center items-center">
                                 <Link className="cursor-default" href={routes.path}>{routes.name}</Link>
                             </div>
                             )
                         }
 
                         return (
-                            <div key={routes.path} className="hover:scale-125 text-xs px-3 py-1 w-fit uppercase cursor-pointer tracking-widest transition-all duration-500 ease-in-out border-2 border-[#260101] flex justify-center items-center">
+                            <div key={routes.path} className="bg-darkRed/20 hover:scale-125 text-xs px-3 py-1 w-fit uppercase cursor-pointer tracking-widest transition-all duration-500 ease-in-out border-2 border-darkRed flex justify-center items-center">
                                 <Link href={routes.path}>{routes.name}</Link>
                             </div>
                         );
@@ -45,14 +45,16 @@ export default function HeaderDesktop(props: { page: string }){
                 <ShoppingCart 
                     color="darkRed" 
                     size={25}
-                    className="hover:scale-125 hover:cursor-pointer transition-transform"
+                    className="active:scale-100 hover:scale-125 hover:cursor-pointer transition-transform"
                 />
         
                 <Heart 
                     color="darkRed" 
                     size={25}
-                    className="hover:scale-125 hover:cursor-pointer transition-transform"
+                    className="active:scale-100 hover:scale-125 hover:cursor-pointer transition-transform"
                 />
+
+
             </div>
         </header>
     );

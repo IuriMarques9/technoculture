@@ -1,12 +1,10 @@
 "use client"
-import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
-import  {Heart} from 'react-feather';
 import BestSellersCards from "./BestSellersCards";
 
 interface Products {
+    _id: string,
     title: string,
     price: number,
     description: string,

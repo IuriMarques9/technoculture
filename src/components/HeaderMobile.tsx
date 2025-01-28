@@ -3,17 +3,25 @@ import Link from "next/link";
 import Logo from "../../public/logo_grande.png";
 import { Menu, ShoppingCart, Heart, X } from "react-feather";
 import routes from "@/lib/routes";
+import Wishlist from "./Wishlist";
+import { useEffect, useState } from "react";
 
-function toogleNav(){
-    const nav = document.querySelector("nav");
-    if(nav?.classList.contains('hidden')){
-        nav?.classList.remove('hidden');
-    }else{
-        nav?.classList.add('hidden');
-    }
-}
 
 export default function HeaderMobile (props: { page: string }){
+    function toogleNav(){
+        const nav = document.querySelector("nav");
+        if(nav?.classList.contains('hidden')){
+            nav?.classList.remove('hidden');
+        }else{
+            nav?.classList.add('hidden');
+        }
+    }
+
+    const [ isWishlistOpen, setIsWishlistOpen ] = useState(false);
+    useEffect(() => {
+        
+    }, [isWishlistOpen])
+
 
     return (
         <header id="Header" className="flex w-full items-center justify-between bg-transparent p-4">
@@ -36,19 +44,20 @@ export default function HeaderMobile (props: { page: string }){
                 <ShoppingCart 
                     color="darkRed" 
                     size={25}
-                    className="hover:scale-125 hover:cursor-pointer transition-transform"
+                    className="active:scale-100 hover:scale-125 hover:cursor-pointer transition-transform"
                 />
         
                 <Heart 
                     color="darkRed" 
                     size={25}
-                    className="hover:scale-125 hover:cursor-pointer transition-transform"
+                    className="active:scale-100 hover:scale-125 hover:cursor-pointer transition-transform"
+                    onClick={() => setIsWishlistOpen(true)}
                 />
             </div>
 
             
             <nav className="hidden h-full flex w-full bg-[rgba(0,0,0,0.5)] fixed left-0 top-0 z-50">
-                <div className="w-[55%] bg-[#590202] fade-right flex flex-col text-end gap-y-4 ">
+                <div className="w-2/4 h-screen bg-[#590202] animate-[fade-left_1s_ease-in-out] absolute top-0 left-0 flex flex-col text-end gap-y-4 ">
                     <div className="flex justify-between p-3 align-center">
                         <h3 className="font-extrabold text-lg">Home</h3>
     
@@ -80,6 +89,12 @@ export default function HeaderMobile (props: { page: string }){
                 }
                 </div>
             </nav>
+
+            {
+                true ? (
+                    <Wishlist />
+                ) : ('')
+            }
         </header>
     );
 }

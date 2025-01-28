@@ -2,6 +2,7 @@ import mongoose, { Schema } from 'mongoose';
 
 const productsSchema = new Schema(
   {
+    _id: { type: String },
     title: {type: String},
     price: { type: Number},
     description: {type: String},
