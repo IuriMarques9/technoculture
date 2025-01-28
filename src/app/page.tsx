@@ -1,5 +1,4 @@
 "use client"
-import LoadingPage from "@/components/LoadingPage";
 import NextEvents from "../components/Home/NextEvents";
 import GalleryCollections from "../components/Home/GalleryCollections";
 import BestSellers from "@/components/Home/BestSellers";
