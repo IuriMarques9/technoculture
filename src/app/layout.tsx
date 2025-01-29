@@ -38,16 +38,17 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-          <header className="fixed w-full top-0 z-50">
-            <Headers />
-          </header>
-
           <Suspense fallback={<LoadingPage/>}> {/* Exibe Loadingpage enquanto carrega */}
-            {/* Passa os produtos para o provider */}
+            {/* Passa os produtos e eventos para o provider */}
             <ProductsProvider products={products}>
               <EventsProvider events={events}>
 
+                <header className="fixed w-full top-0 z-50">
+                  <Headers />
+                </header>
+
                 {children}
+
               </EventsProvider>
             </ProductsProvider>
           </Suspense>

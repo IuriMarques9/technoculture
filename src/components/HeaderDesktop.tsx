@@ -1,11 +1,15 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../public/logo_grande.png";
 import { ShoppingCart, Heart } from "react-feather";
 import routes from "@/lib/routes";
+import { useState } from "react";
+import Wishlist from "./Wishlist";
 
 export default function HeaderDesktop(props: { page: string }){
     
+    const [showWishlist, setShowWishlist] = useState(false);
     
     return (
         <header id="Header" className="flex w-full items-center justify-between bg-transparent p-4 h-fit gap-1">
@@ -43,19 +47,33 @@ export default function HeaderDesktop(props: { page: string }){
                 <div className="h-[32px] border-darkRed border"></div>
 
                 <ShoppingCart 
-                    color="darkRed" 
+                    color="white" 
                     size={25}
-                    className="active:scale-100 hover:scale-125 hover:cursor-pointer transition-transform"
+                    className="active:scale-100 fill-darkRed/20 hover:scale-125 hover:cursor-pointer transition-transform"
                 />
         
                 <Heart 
-                    color="darkRed" 
+                    color="white" 
                     size={25}
-                    className="active:scale-100 hover:scale-125 hover:cursor-pointer transition-transform"
+                    className="active:scale-100 fill-darkRed/20 hover:scale-125 hover:cursor-pointer transition-transform"
+                    onMouseOver={()=>setShowWishlist(true)}
+                    onMouseLeave={()=>setShowWishlist(false)}
                 />
 
 
             </div>
+            {
+                //showWishlist
+                true && (
+                    <div 
+                        onMouseOver={()=>setShowWishlist(true)} 
+                        onMouseLeave={()=>setShowWishlist(false)}
+                        className="absolute right-4 top-12 bg-mediumRed rounded-md px-6 py-4 w-6/12"
+                    >
+                        <Wishlist />
+                    </div>
+                )
+            }
         </header>
     );
 }

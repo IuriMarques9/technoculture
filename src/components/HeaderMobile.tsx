@@ -3,8 +3,6 @@ import Link from "next/link";
 import Logo from "../../public/logo_grande.png";
 import { Menu, ShoppingCart, Heart, X } from "react-feather";
 import routes from "@/lib/routes";
-import Wishlist from "./Wishlist";
-import { useEffect, useState } from "react";
 
 
 export default function HeaderMobile (props: { page: string }){
@@ -17,16 +15,11 @@ export default function HeaderMobile (props: { page: string }){
         }
     }
 
-    const [ isWishlistOpen, setIsWishlistOpen ] = useState(false);
-    useEffect(() => {
-        
-    }, [isWishlistOpen])
-
 
     return (
         <header id="Header" className="flex w-full items-center justify-between bg-transparent p-4">
             <Menu 
-                color="darkRed" 
+                color="white" 
                 size={25}
                 className="hover:scale-125 hover:cursor-pointer transition-transform"
                 onClick={toogleNav}
@@ -42,16 +35,16 @@ export default function HeaderMobile (props: { page: string }){
         
             <div className="flex gap-2">
                 <ShoppingCart 
-                    color="darkRed" 
+                    color="white" 
                     size={25}
-                    className="active:scale-100 hover:scale-125 hover:cursor-pointer transition-transform"
+                    className="active:scale-100 fill-darkRed/20 hover:scale-125 hover:cursor-pointer transition-transform"
                 />
         
                 <Heart 
-                    color="darkRed" 
+                    color="white" 
                     size={25}
-                    className="active:scale-100 hover:scale-125 hover:cursor-pointer transition-transform"
-                    onClick={() => setIsWishlistOpen(true)}
+                    className="active:scale-100 fill-darkRed/20 hover:scale-125 hover:cursor-pointer transition-transform"
+                    
                 />
             </div>
 
@@ -90,11 +83,7 @@ export default function HeaderMobile (props: { page: string }){
                 </div>
             </nav>
 
-            {
-                true ? (
-                    <Wishlist />
-                ) : ('')
-            }
+            
         </header>
     );
 }

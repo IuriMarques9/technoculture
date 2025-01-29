@@ -13,7 +13,7 @@ export default function BestSellersCards( {product} : { product: Product } ) {
     const addRemoveWishlist = () => {
         let currentWishlist = localStorage.getItem('wishlist') ?? '';//Caso null fica vazio
 
-        const wishlistArray = currentWishlist.split('#').filter(id => id !== ''); //Passa a string que vem da local storage para um array com os id dos produtos e elemina os vazios 
+        const wishlistArray = currentWishlist.split('#').filter(id => id !== ''); //Passa a string que vem da local storage para um array com os id dos produtos e elimina os vazios 
 
         if(wishlistArray.includes(product._id)){   //Se o produto ja tiver sido adicionado remove-o
             currentWishlist = wishlistArray.filter(id => id !== product._id).join('#'); //Remove o id do produto do objeto da lista e guarda em string na list para adicionar ao local storage
