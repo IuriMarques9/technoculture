@@ -6,11 +6,22 @@ import { ShoppingCart, Heart } from "react-feather";
 import routes from "@/lib/routes";
 import { useState } from "react";
 import Wishlist from "./Wishlist";
+import { useProducts } from "@/Providers/ProductsProvider";
 
 export default function HeaderDesktop(props: { page: string }){
+    const wishlist = localStorage.getItem('wishlist') ?? '';
+    const wishlistProductsId = wishlist.split('#').filter(id => id !== ''); //Passa a string que vem da local storage para um array com os id dos produtos e elimina os vazios 
+
+    const products = useProducts(); //Pega todos os produtos do contexto de produtos
     
+        // Filtra os produtos que estão na wishlist
+        const wishlistProducts = products.filter((product) => 
+            wishlistProductsId.includes(product._id)
+        );
+        
     const [showWishlist, setShowWishlist] = useState(false);
     
+
     return (
         <header id="Header" className="flex w-full items-center justify-between bg-transparent p-4 h-fit gap-1">
             <Link href="/">
@@ -63,14 +74,13 @@ export default function HeaderDesktop(props: { page: string }){
 
             </div>
             {
-                //showWishlist
-                true && (
+                showWishlist && (
                     <div 
                         onMouseOver={()=>setShowWishlist(true)} 
                         onMouseLeave={()=>setShowWishlist(false)}
-                        className="absolute right-4 top-12 bg-mediumRed rounded-md px-6 py-4 w-6/12"
+                        className="max-w-[600px] shadow-[4px_4px_7px_1px_rgba(0,0,0,0.5)] flex flex-col gap-4 absolute right-4 top-12 bg-mediumRed rounded-md px-6 py-4 w-6/12"
                     >
-                        <Wishlist />
+                        <Wishlist wishlist={wishlistProducts}/>
                     </div>
                 )
             }
