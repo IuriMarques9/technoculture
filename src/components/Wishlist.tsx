@@ -8,15 +8,6 @@ interface WishlistProducts{
 
 export default function Wishlist( wishlistProducts:  WishlistProducts){
     
-    const wishlist = localStorage.getItem('wishlist') ?? '';
-    const wishlistArray = wishlist.split('#').filter(id => id !== ''); //Passa a string que vem da local storage para um array com os id dos produtos e elimina os vazios 
-    
-    const removeWishlist = (productId: string) => {
-        const updatedWishlist = wishlistArray.filter(product => product !== productId);
-
-        localStorage.setItem('wishlist', updatedWishlist.join('#'));
-    }
-
     return (
         <>
             <h3 className="text-4xl">Wishlist</h3>

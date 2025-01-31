@@ -8,7 +8,7 @@ export default function BestSellersCards( {product} : { product: Product } ) {
   
     const [colorSelected, setColorSelected] = useState(0);
 
-    const [wishlist, setWishlist] = useState(localStorage.getItem('wishlist'));
+    const [wishlist, setWishlist] = useState(localStorage.getItem('wishlist')?? '#');
 
     const addRemoveWishlist = () => {
         let currentWishlist = localStorage.getItem('wishlist') ?? '';//Caso null fica vazio
@@ -19,14 +19,13 @@ export default function BestSellersCards( {product} : { product: Product } ) {
             currentWishlist = wishlistArray.filter(id => id !== product._id).join('#'); //Remove o id do produto do objeto da lista e guarda em string na list para adicionar ao local storage
 
         }else{                                      //Senão adiciona-o
-            currentWishlist += '#' + product._id;   //Adiciona o id do produto ao objeto da lista
+            wishlistArray.push(product._id);   //Adiciona o id do produto ao array da lista
+            currentWishlist = wishlistArray.join('#') ; //Transforma o array da lista em string
         } 
         
-        localStorage.setItem('wishlist', currentWishlist); //Guarda a lista no local storage
-        setWishlist(localStorage.getItem('wishlist')) //No fim atualiza a constante da wishlist para a forma mais recente da lista
-        
+        localStorage.setItem('wishlist', currentWishlist); //Guarda a string da lista no local storage
+        setWishlist(currentWishlist) //No fim atualiza a constante da wishlist para a forma mais recente da lista
     }
-    
 
     return (
         <div className="mx-auto hover:scale-105 cursor-pointer transition-all duration-200 ease-in-out shadow-[inset_0_0_70px_15px_rgba(38,1,1,1)] border-darkRed border-2 p-3 rounded-lg max-w-[300px] text-start">
@@ -58,8 +57,8 @@ export default function BestSellersCards( {product} : { product: Product } ) {
                     className="rounded-lg transition-all duration-200 ease-in-out w-2/12 flex justify-center"
                 >
                     <Heart 
-                        color={wishlist?.split('#').includes(product._id) ? "darkRed" : "currentColor"} 
-                        className={`${wishlist?.split('#').includes(product._id) ? 'fill-lightRed' : 'currentColor'} active:scale-100 hover:scale-125  transition-all duration-200 ease-in-out cursor-pointer`}
+                        color={wishlist.split('#').includes(product._id) ? "darkRed" : "currentColor"} 
+                        className={`${wishlist.split('#').includes(product._id) ? 'fill-lightRed' : 'currentColor'} active:scale-100 hover:scale-125  transition-all duration-200 ease-in-out cursor-pointer`}
                         size={28}
                     />
                 </button>
