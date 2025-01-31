@@ -8,10 +8,18 @@ interface WishlistProducts{
 
 export default function Wishlist( wishlistProducts:  WishlistProducts){
     
+    const wishlist = localStorage.getItem('wishlist') ?? '';
+    const wishlistArray = wishlist.split('#').filter(id => id !== ''); //Passa a string que vem da local storage para um array com os id dos produtos e elimina os vazios 
+    
+    const removeWishlist = (productId: string) => {
+        const updatedWishlist = wishlistArray.filter(product => product !== productId);
+
+        localStorage.setItem('wishlist', updatedWishlist.join('#'));
+    }
 
     return (
         <>
-            <h2>Wishlist</h2>
+            <h3 className="text-4xl">Wishlist</h3>
 
 
             {
@@ -27,11 +35,15 @@ export default function Wishlist( wishlistProducts:  WishlistProducts){
                             priority
                         />
 
-                        <div className="flex flex-col justify-evenly grow">
-                            <h3 className="text-xl lg:text-2xl">{product.title}</h3>
-                            <h5 className="lg:text-xl">{product.price}€</h5>
+                        <div className="flex flex-col justify-between grow">
+                            <div>
+                                <h3 className="text-xl lg:text-2xl">{product.title}</h3>
+                                <hr />
+                                <h5 className="lg:text-xl">{product.price}€</h5>
+                            </div>
+                            
 
-                            <div className="flex">
+                            <div className="flex items-center">
                                 <button className="bg-lightRed py-1 w-full rounded-lg hover:brightness-50 active:brightness-75 transition-all duration-200 ease-in-out">Add to cart</button>
 
                                 <button
@@ -40,8 +52,8 @@ export default function Wishlist( wishlistProducts:  WishlistProducts){
                                     <Trash2
                                         color={"white"} 
                                         className={` active:scale-100 hover:scale-125  transition-all duration-200 ease-in-out cursor-pointer`}
-                                        size={28}
-                                        
+                                        size={25}
+                                        onClick={() => removeWishlist(product._id)}
                                     />
                                 </button>
                             </div>

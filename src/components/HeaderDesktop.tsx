@@ -15,9 +15,9 @@ export default function HeaderDesktop(props: { page: string }){
     const products = useProducts(); //Pega todos os produtos do contexto de produtos
     
         // Filtra os produtos que estão na wishlist
-        const wishlistProducts = products.filter((product) => 
-            wishlistProductsId.includes(product._id)
-        );
+    const wishlistProducts = products.filter((product) => 
+        wishlistProductsId.includes(product._id)
+    );
         
     const [showWishlist, setShowWishlist] = useState(false);
     
@@ -60,21 +60,32 @@ export default function HeaderDesktop(props: { page: string }){
                 <ShoppingCart 
                     color="white" 
                     size={25}
-                    className="active:scale-100 fill-darkRed/20 hover:scale-125 hover:cursor-pointer transition-transform"
+                    className="active:scale-[0.85] fill-darkRed/20 hover:cursor-pointer transition-transform"
                 />
         
-                <Heart 
-                    color="white" 
-                    size={25}
-                    className="active:scale-100 fill-darkRed/20 hover:scale-125 hover:cursor-pointer transition-transform"
-                    onMouseOver={()=>setShowWishlist(true)}
-                    onMouseLeave={()=>setShowWishlist(false)}
-                />
+        
+                <div className="relative active:scale-[0.85] transition-transform">
+                    <Heart 
+                        color="white" 
+                        size={25}
+                        className="fill-darkRed/20 hover:cursor-pointer"
+                        onMouseOver={()=>setShowWishlist(true)}
+                        onMouseLeave={()=>setShowWishlist(false)}
+                    />
+                    {
+                        wishlistProducts.length > 0 && (
+                            <div className="w-4 h-4 bg-lightRed rounded-full absolute -top-2 -right-2 flex justify-center items-center">
+                                <p className="text-xs">{wishlistProducts.length}</p>
+                            </div>
+                        )
+                    }
+                </div>
 
 
             </div>
             {
-                showWishlist && (
+                (showWishlist && wishlistProducts.length > 0) ? (
+
                     <div 
                         onMouseOver={()=>setShowWishlist(true)} 
                         onMouseLeave={()=>setShowWishlist(false)}
@@ -82,7 +93,16 @@ export default function HeaderDesktop(props: { page: string }){
                     >
                         <Wishlist wishlist={wishlistProducts}/>
                     </div>
-                )
+
+                ) : (showWishlist && wishlistProducts.length === 0) ? (
+
+                    <div className="max-w-[600px] shadow-[4px_4px_7px_1px_rgba(0,0,0,0.5)] flex flex-col gap-4 absolute right-4 top-12 bg-mediumRed rounded-md px-6 py-4 w-6/12">
+                        <h3 className="text-4xl">Wishlist</h3>
+
+                        <p>No products saved on your wishlist</p>
+                    </div>
+
+                ) : null
             }
         </header>
     );
