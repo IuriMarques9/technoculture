@@ -1,13 +1,26 @@
+"use client"
 import Image from "next/image";
 import { Trash2 } from "react-feather";
 import { Product } from "@/Interfaces/Product";
+import { useEffect, useState } from "react";
 
 interface WishlistProducts{
     wishlist: Product[];
 }
 
 export default function Wishlist( wishlistProducts:  WishlistProducts){
+    const [wishlist, setWishlist] = useState('');
+    useEffect(() => {
+        setWishlist(localStorage.getItem('wishlist') ?? '#')
+    }, []);
     
+    const removeWishlist = (productId: string) => {
+        const wishlistArray = wishlist.split('#').filter(id => id !== ''); //Passa a string que vem da local storage para um array com os id dos produtos e elimina os vazios 
+        const updatedWishlist = wishlistArray.filter(product => product !== productId);
+
+        localStorage.setItem('wishlist', updatedWishlist.join('#'));
+    }
+
     return (
         <>
             <h3 className="text-4xl">Wishlist</h3>

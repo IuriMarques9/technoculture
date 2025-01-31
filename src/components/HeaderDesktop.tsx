@@ -6,8 +6,18 @@ import { ShoppingCart, Heart } from "react-feather";
 import routes from "@/lib/routes";
 import { useState } from "react";
 import Wishlist from "./Wishlist";
+import { useProducts } from "@/Providers/ProductsProvider";
 
 export default function HeaderDesktop(props: { page: string }){
+    const wishlist = localStorage.getItem('wishlist') ?? '';
+    const wishlistProductsId = wishlist.split('#').filter(id => id !== ''); //Passa a string que vem da local storage para um array com os id dos produtos e elimina os vazios 
+
+    const products = useProducts(); //Pega todos os produtos do contexto de produtos
+    
+        // Filtra os produtos que estão na wishlist
+    const wishlistProducts = products.filter((product) => 
+        wishlistProductsId.includes(product._id)
+    );
         
     const [showWishlist, setShowWishlist] = useState(false);
     
@@ -62,18 +72,11 @@ export default function HeaderDesktop(props: { page: string }){
                         onMouseOver={()=>setShowWishlist(true)}
                         onMouseLeave={()=>setShowWishlist(false)}
                     />
-                    {/*
-                        wishlistProducts.length > 0 && (
-                            <div className="w-4 h-4 bg-lightRed rounded-full absolute -top-2 -right-2 flex justify-center items-center">
-                                <p className="text-xs">{wishlistProducts.length}</p>
-                            </div>
-                        )
-                    */}
                 </div>
 
 
             </div>
-            {/*
+            {
                 (showWishlist && wishlistProducts.length > 0) ? (
 
                     <div 
@@ -93,7 +96,7 @@ export default function HeaderDesktop(props: { page: string }){
                     </div>
 
                 ) : null
-            */}
+            }
         </header>
     );
 }
