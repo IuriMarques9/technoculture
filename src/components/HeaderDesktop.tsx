@@ -29,7 +29,6 @@ export default function HeaderDesktop(props: { page: string }){
                     height={170}   
                 />            
             </Link>
-        
             
             <div className="w-fit flex items-center gap-x-3">                
        
@@ -64,11 +63,19 @@ export default function HeaderDesktop(props: { page: string }){
                     <Heart 
                         color="white" 
                         size={25}
-                        className="fill-darkRed/20 hover:cursor-pointer"
+                        className="hover:text-lightRed fill-darkRed/20 hover:cursor-pointer"
                         onMouseOver={()=>setShowWishlist(true)}
                         onMouseLeave={()=>setShowWishlist(false)}
                     />
                 </div>
+
+                {
+                    wishlistProducts.length > 0 ? (
+                        <div className="w-4 h-4 bg-lightRed rounded-full flex justify-center items-center absolute top-4 right-2">
+                            <p className="text-[10px]">{wishlistProducts.length}</p>
+                        </div>
+                    ) : null
+                }
             </div>
             {
                 showWishlist && wishlist.length > 0 ? (
