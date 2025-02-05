@@ -4,13 +4,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 import Image from "next/image";
-import { Event } from "@/Interfaces/Event";
+import { useEvents } from "@/Providers/EventsProvider";
 
-interface Events {
-  events: Event[];  // Tipagem da prop 'events' como um array de objetos 'Event'
-}
-
-export default function NextEvents( nextEvents: Events ) {
+export default function NextEvents( ) {
     
     const settings = {
         dots: true, // Mostrar os indicadores (bolinhas)
@@ -38,13 +34,17 @@ export default function NextEvents( nextEvents: Events ) {
         prevArrow: <CustomPrevArrow />,
     };
     
-
+    const events = useEvents(); //Context Events
+    const currentDate = new Date(); //Data atual    
     
-return nextEvents.events.length > 0 ? (
+    const filteredEvents = events.filter((event) => new Date(event.date) >= currentDate); //Filtra os eventos guardando os que são futuros
+    const nextEvents = filteredEvents.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()); //Ordena os pelos mais proximos da data atual
+    
+return nextEvents.length > 0 ? (
         <Slider {...settings}>
             {
                 // Events array
-                nextEvents.events.map((event) => (    
+                nextEvents.map((event) => (    
                     <Link key={event._id} href={event.link}>
                         <div className={`hover:brightness-75 transition ease-in-out duration-500`}>
                             <Image

@@ -1,26 +1,13 @@
 "use client"
 import Image from "next/image";
 import { Trash2 } from "react-feather";
+import { useWishlist } from "@/Providers/WishlistProvider";
 import { Product } from "@/Interfaces/Product";
-import { useEffect, useState } from "react";
 
-interface WishlistProducts{
-    wishlist: Product[];
-}
 
-export default function Wishlist( wishlistProducts:  WishlistProducts){
-    const [wishlist, setWishlist] = useState('');
-    useEffect(() => {
-        setWishlist(localStorage.getItem('wishlist') ?? '#')
-    }, []);
+export default function Wishlist({wishlistProducts}:  {wishlistProducts: Product[]}) {
+    const { toggleWishlist} = useWishlist();
     
-    const removeWishlist = (productId: string) => {
-        const wishlistArray = wishlist.split('#').filter(id => id !== ''); //Passa a string que vem da local storage para um array com os id dos produtos e elimina os vazios 
-        const updatedWishlist = wishlistArray.filter(product => product !== productId);
-
-        localStorage.setItem('wishlist', updatedWishlist.join('#'));
-    }
-
     return (
         <>
             <h3 className="text-4xl">Wishlist</h3>
@@ -28,7 +15,7 @@ export default function Wishlist( wishlistProducts:  WishlistProducts){
 
             {
                 //Mapeia os produtos da wishlist
-                wishlistProducts.wishlist.map((product) => ( 
+                wishlistProducts.map((product) => ( 
                     <div key={product._id} className="flex gap-3 shadow-[inset_0_0_70px_15px_rgba(38,1,1,1)] border-darkRed border-2 p-3 rounded-lg text-start">
                         <Image 
                             src={product.url} 
@@ -57,7 +44,7 @@ export default function Wishlist( wishlistProducts:  WishlistProducts){
                                         color={"white"} 
                                         className={` active:scale-100 hover:scale-125  transition-all duration-200 ease-in-out cursor-pointer`}
                                         size={25}
-                                        onClick={() => removeWishlist(product._id)}
+                                        onClick={() => toggleWishlist(product._id)}
                                     />
                                 </button>
                             </div>

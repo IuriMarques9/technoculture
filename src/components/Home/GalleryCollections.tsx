@@ -2,16 +2,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import Slider from "react-slick";
-import { Event } from "@/Interfaces/Event";
+import { useEvents } from "@/Providers/EventsProvider";
 
 
-interface Events {
-  events: Event[];  // Tipagem da prop 'events' como um array de objetos 'Event'
-}
 
-export default function GalleryCollections( eventCollections: Events ) {
+export default function GalleryCollections() {
 
-  
   const settings = {
     dots: false, // Mostrar os indicadores (bolinhas)
     infinite: false, // Loop infinito
@@ -36,12 +32,19 @@ export default function GalleryCollections( eventCollections: Events ) {
     draggable: false, // Desativa o arrastar em desktops
   };
 
-  return eventCollections.events.length > 0 ? (
+  const events = useEvents(); //Context Events
+  const currentDate = new Date(); //Data atual    
+
+  const passedEvents = events.filter((event) => new Date(event.date) <= currentDate) //Guarda os eventos antigos
+  const eventCollections = passedEvents.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0,3); //Ordena pelo mais recente e retira os 3 mais recentes
+
+
+  return eventCollections.length > 0 ? (
       <>
         <Slider {...settings} className="z-30">
           {
               // Events array
-              eventCollections.events.map((event) => (
+              eventCollections.map((event) => (
                 <Link key={event.title} className={`hover:brightness-75 transition ease-in-out duration-500`} href={event.link}>
                     <Image
                       src={event.url}

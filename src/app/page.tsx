@@ -3,31 +3,9 @@ import NextEvents from "../components/Home/NextEvents";
 import GalleryCollections from "../components/Home/GalleryCollections";
 import BestSellers from "@/components/Home/BestSellers";
 import Image from "next/image";
-import { useProducts } from "@/Providers/ProductsProvider";
-import { useEvents } from "@/Providers/EventsProvider";
-
 
 
 export default function page() {  
-  
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const products = useProducts(); //Context Products
-      //Constant for bestSellers 
-      const bestSellers = products.sort((a, b) => b.sales - a.sales).slice(0,3); // Pegar os 3 melhores vendas e ordenar por ordem decrescente
-  
-    
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const events = useEvents(); //Context Events
-      const currentDate = new Date(); //Data atual
-      //Constants for Next Events
-      const filteredEvents = events.filter((event) => new Date(event.date) >= currentDate);
-      const nextEvents = filteredEvents.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-      
-      //Constants for Gallery Collections
-      const passedEvents = events.filter((event) => new Date(event.date) <= currentDate)
-      const eventCollections = passedEvents.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0,3);
-
-
 
   return (
     <main>
@@ -41,7 +19,7 @@ export default function page() {
           <h2 className="font-semibold xl:text-6xl">Next Events</h2>
 
           <div className="mx-auto my-7 px-16">
-            <NextEvents events={nextEvents}/>
+            <NextEvents />
           </div>
           
         </div>
@@ -77,7 +55,7 @@ export default function page() {
           <h2 className="font-semibold xl:text-6xl">Gallery</h2>
 
           <div className="mx-auto my-7 px-16">
-            <GalleryCollections events={eventCollections}/>
+            <GalleryCollections />
           </div>
 
         </div>
@@ -116,7 +94,7 @@ export default function page() {
           <h2 className="font-semibold xl:text-6xl">Best Sellers</h2>
 
           <div className="mx-auto my-7 px-5">
-            <BestSellers products={bestSellers}/>
+            <BestSellers />
           </div>
 
         </div>

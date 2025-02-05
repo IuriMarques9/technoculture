@@ -6,21 +6,18 @@ import { ShoppingCart, Heart } from "react-feather";
 import routes from "@/lib/routes";
 import { useState } from "react";
 import Wishlist from "./Wishlist";
+import { useWishlist } from "@/Providers/WishlistProvider";
 import { useProducts } from "@/Providers/ProductsProvider";
 
 export default function HeaderDesktop(props: { page: string }){
-    const wishlist = localStorage.getItem('wishlist') ?? '';
-    const wishlistProductsId = wishlist.split('#').filter(id => id !== ''); //Passa a string que vem da local storage para um array com os id dos produtos e elimina os vazios 
+     
+    const { wishlist }= useWishlist();
+    const products = useProducts();
 
-    const products = useProducts(); //Pega todos os produtos do contexto de produtos
+    const wishlistProducts = products.filter(product => wishlist.includes(product._id)); //Filtra os produtos colocando so os que estao na wishlist
+
     
-        // Filtra os produtos que estão na wishlist
-    const wishlistProducts = products.filter((product) => 
-        wishlistProductsId.includes(product._id)
-    );
-        
-    const [showWishlist, setShowWishlist] = useState(false);
-    
+    const [showWishlist, setShowWishlist] = useState(false)
 
     return (
         <header id="Header" className="flex w-full items-center justify-between bg-transparent p-4 h-fit gap-1">
@@ -32,10 +29,10 @@ export default function HeaderDesktop(props: { page: string }){
                     height={170}   
                 />            
             </Link>
-
-
-            <div className="w-fit flex items-center gap-x-3">                
         
+            
+            <div className="w-fit flex items-center gap-x-3">                
+       
                 {
                     routes.map((routes) => {
                         if(routes.path === props.page){ //If its the current page, decoration in button
@@ -63,7 +60,6 @@ export default function HeaderDesktop(props: { page: string }){
                     className="active:scale-[0.85] fill-darkRed/20 hover:cursor-pointer transition-transform"
                 />
         
-        
                 <div className="relative active:scale-[0.85] transition-transform">
                     <Heart 
                         color="white" 
@@ -73,23 +69,25 @@ export default function HeaderDesktop(props: { page: string }){
                         onMouseLeave={()=>setShowWishlist(false)}
                     />
                 </div>
-
-
             </div>
             {
-                (showWishlist && wishlistProducts.length > 0) ? (
+                showWishlist && wishlist.length > 0 ? (
 
                     <div 
                         onMouseOver={()=>setShowWishlist(true)} 
                         onMouseLeave={()=>setShowWishlist(false)}
                         className="max-w-[600px] shadow-[4px_4px_7px_1px_rgba(0,0,0,0.5)] flex flex-col gap-4 absolute right-4 top-12 bg-mediumRed rounded-md px-6 py-4 w-6/12"
                     >
-                        <Wishlist wishlist={wishlistProducts}/>
+                        <Wishlist wishlistProducts={wishlistProducts} />
                     </div>
 
-                ) : (showWishlist && wishlistProducts.length === 0) ? (
+                ) : (showWishlist && wishlist.length === 0) ? (
 
-                    <div className="max-w-[600px] shadow-[4px_4px_7px_1px_rgba(0,0,0,0.5)] flex flex-col gap-4 absolute right-4 top-12 bg-mediumRed rounded-md px-6 py-4 w-6/12">
+                    <div 
+                        onMouseOver={()=>setShowWishlist(true)} 
+                        onMouseLeave={()=>setShowWishlist(false)}
+                        className="max-w-[600px] shadow-[4px_4px_7px_1px_rgba(0,0,0,0.5)] flex flex-col gap-4 absolute right-4 top-12 bg-mediumRed rounded-md px-6 py-4 w-6/12"
+                    >
                         <h3 className="text-4xl">Wishlist</h3>
 
                         <p>No products saved on your wishlist</p>
