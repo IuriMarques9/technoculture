@@ -1,23 +1,7 @@
-"use client"
-import { useEffect, useState } from "react";
 import { Facebook, Instagram, Youtube, } from "react-feather";
 
 export default function SocialIcones() {
-   const [isVisible, setIsVisible] = useState(false);
-       
-       useEffect(() => {
-           const handleScroll = () => {
-             if (window.scrollY > 10) {
-               setIsVisible(true);
-             } else {
-               setIsVisible(false);
-             }
-           };
-       
-           window.addEventListener("scroll", handleScroll);
-           return () => window.removeEventListener("scroll", handleScroll);
-         }, []);
-         
+      
     return (            
         <div className="flex gap-3">
             <a 
