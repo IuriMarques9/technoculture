@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link";
-import {Loader} from "react-feather";
+import { Loader } from "react-feather";
 import Alert from "@/components/Alert";
 import { useState } from "react";
 
@@ -10,7 +10,7 @@ export default function Footer(){
 
   const [email, setEmail] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
     setShowAlert(false);

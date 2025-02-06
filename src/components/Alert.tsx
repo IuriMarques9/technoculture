@@ -5,7 +5,7 @@ import { X } from "react-feather";
 interface AlertProps {
     title: string,
     message?: string,
-    type: "success" | "error" | "warning" | "info",
+    type: string,
 }
 
 export default function Alert({title, message, type}: AlertProps) {
