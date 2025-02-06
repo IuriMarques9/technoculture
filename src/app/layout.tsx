@@ -7,6 +7,8 @@ import { EventsProvider } from "@/Providers/EventsProvider";
 import { Suspense } from "react";
 import { WishlistProvider } from "@/Providers/WishlistProvider";
 import LoadingPage from "@/components/LoadingPage";
+import ToTopButton from "@/components/ToTopButton";
+import SocialIcones from "@/components/SocialIcones";
 
 export const metadata: Metadata = {
   title: "TechnoCulture",
@@ -19,28 +21,34 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+	
+  	return (
+		<html lang="en">
+			<body>
+				<Suspense fallback={<LoadingPage/>}> {/* Exibe Loadingpage enquanto carrega */}
+				{/* Passa os produtos e eventos para o provider */}
+					<ProductsProvider>
+					<EventsProvider>
+					<WishlistProvider>
 
-  return (
-    <html lang="en">
-      <body>
-          <Suspense fallback={<LoadingPage/>}> {/* Exibe Loadingpage enquanto carrega */}
-            {/* Passa os produtos e eventos para o provider */}
-            <ProductsProvider>
-              <EventsProvider>
-                <WishlistProvider>
+					<header className="fixed w-full top-0 z-50">
+						<Headers />
+					</header>
 
-                  <header className="fixed w-full top-0 z-50">
-                    <Headers />
-                  </header>
+					{children}
+					</WishlistProvider>
+					</EventsProvider>
+					</ProductsProvider>
+				</Suspense>
 
-                  {children}
-                </WishlistProvider>
-              </EventsProvider>
-            </ProductsProvider>
-          </Suspense>
+				<div className="fixed bottom-5 right-5 flex items-center gap-3">
+					<SocialIcones />
 
-          <Footer />
-      </body>
-    </html>
-  );
+					<ToTopButton />
+				</div>
+		
+				<Footer />
+			</body>
+		</html>
+  	);
 }
