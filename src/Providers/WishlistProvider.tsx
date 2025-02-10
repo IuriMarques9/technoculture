@@ -9,7 +9,10 @@ interface WishlistContextType {
 }
 
 // Criamos o contexto
-const WishlistContext = createContext<WishlistContextType | undefined>(undefined);
+const WishlistContext = createContext<WishlistContextType>({
+  wishlist: [],
+  toggleWishlist: () => {}, // Função vazia para evitar erro ao acessar antes da inicialização
+});
 
 // Criamos o Provider
 export function WishlistProvider({ children } : {children: ReactNode}) {
@@ -44,7 +47,7 @@ export function WishlistProvider({ children } : {children: ReactNode}) {
 // Criamos um hook personalizado para facilitar o uso do contexto
 export function useWishlist () {
     const context = useContext(WishlistContext);
-      if (context === null) {
+      if (!context) {
         throw new Error("useWishlist deve ser usado dentro de um WishlistProvider.");
       }
       return context;

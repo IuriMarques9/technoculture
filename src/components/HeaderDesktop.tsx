@@ -11,7 +11,7 @@ import { useProducts } from "@/Providers/ProductsProvider";
 
 export default function HeaderDesktop(props: { page: string }){
      
-    const { wishlist }= useWishlist();
+    const { wishlist } = useWishlist();
     const products = useProducts();
 
     const wishlistProducts = products.filter(product => wishlist.includes(product._id)); //Filtra os produtos colocando so os que estao na wishlist
