@@ -27,7 +27,7 @@ export default async function RootLayout({
 		<html lang="en">
 			<body>
 				<Suspense fallback={<LoadingPage/>}> {/* Exibe Loadingpage enquanto carrega */}
-				{/* Passa os produtos e eventos para o provider */}
+					{/* Passa os produtos e eventos para o provider */}
 					<ProductsProvider>
 					<EventsProvider>
 					<WishlistProvider>
