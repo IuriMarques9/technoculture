@@ -13,6 +13,6 @@ const productsSchema = new Schema(
 );
 
 //O terceiro parametro refere-se à tabela do banco de dados
-const Products = mongoose.models.Products || mongoose.model('products', productsSchema, 'products');
+const Products = mongoose.models.Products || mongoose.model('Products', productsSchema, 'products');
 
 export default Products;

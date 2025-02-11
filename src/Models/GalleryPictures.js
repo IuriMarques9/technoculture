@@ -8,6 +8,6 @@ const galleryPicturesSchema = new Schema(
 );
 
 //O terceiro parametro refere-se à tabela do banco de dados
-const GalleryPictures = mongoose.models.GalleryPictures || mongoose.model('galleryPictures', galleryPicturesSchema, 'galleryPictures');
+const GalleryPictures = mongoose.models.GalleryPictures || mongoose.model('GalleryPictures', galleryPicturesSchema, 'galleryPictures');
 
 export default GalleryPictures;
