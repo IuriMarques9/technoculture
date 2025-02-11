@@ -9,6 +9,7 @@ import { WishlistProvider } from "@/Providers/WishlistProvider";
 import LoadingPage from "@/components/LoadingPage";
 import ToTopButton from "@/components/ToTopButton";
 import SocialIcones from "@/components/SocialIcones";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata: Metadata = {
   title: "TechnoCulture",
@@ -36,6 +37,8 @@ export default async function RootLayout({
 					</header>
 
 					{children}
+					<SpeedInsights /> {/* Vercel speed analitycs */}
+
 					</WishlistProvider>
 					</EventsProvider>
 					</ProductsProvider>
