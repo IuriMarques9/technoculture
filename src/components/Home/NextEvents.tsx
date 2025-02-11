@@ -6,6 +6,28 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEvents } from "@/Providers/EventsProvider";
 
+function CustomNextArrow(props: { className: string; style: object; onClick: undefined; }) {
+    const { className, style, onClick } = props;
+    return (
+        <div
+            className={className}
+            style={{ ...style }}
+            onClick={onClick}
+        />
+      
+    );
+}
+  
+function CustomPrevArrow(props: { className: string; style: object; onClick: undefined; }) {
+    const { className, style, onClick } = props ;
+    return (
+        <div
+            className={className}
+            style={{ ...style }}
+            onClick={onClick}
+        />
+    );
+}
 export default function NextEvents( ) {
     
     const settings = {
@@ -30,8 +52,8 @@ export default function NextEvents( ) {
                 },
             },
         ],
-        nextArrow: <CustomNextArrow />, // Personalizando botão "próximo"
-        prevArrow: <CustomPrevArrow />,
+        nextArrow: <CustomNextArrow className="" style={{}} onClick={undefined}/>, // Personalizando botão "próximo"
+        prevArrow: <CustomPrevArrow className="" style={{}} onClick={undefined}/>,
     };
     
     const events = useEvents(); //Context Events
@@ -61,29 +83,4 @@ return nextEvents.length > 0 ? (
             }
         </Slider>
     ) : (<p>No Events</p>);
-}
-
-
-
-function CustomNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-        <div
-            className={className}
-            style={{ ...style }}
-            onClick={onClick}
-        />
-      
-    );
-}
-  
-  function CustomPrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-        <div
-            className={className}
-            style={{ ...style }}
-            onClick={onClick}
-        />
-    );
 }
