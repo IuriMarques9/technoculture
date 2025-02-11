@@ -11,6 +11,8 @@ import ToTopButton from "@/components/ToTopButton";
 import SocialIcones from "@/components/SocialIcones";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from "@vercel/analytics/react"
+
+
 export const metadata: Metadata = {
   title: "TechnoCulture",
   description: "Eletronic music events",
