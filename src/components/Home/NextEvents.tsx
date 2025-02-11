@@ -1,10 +1,14 @@
 "use client"
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 import Image from "next/image";
 import { useEvents } from "@/Providers/EventsProvider";
+import dynamic from "next/dynamic";
+
+
+// Importação dinâmica para evitar problemas de SSR
+const Slider = dynamic(() => import('react-slick'), { ssr: false });
 
 function CustomNextArrow(props: { className: string; style: object; onClick: undefined; }) {
     const { className, style, onClick } = props;
@@ -28,6 +32,7 @@ function CustomPrevArrow(props: { className: string; style: object; onClick: und
         />
     );
 }
+
 export default function NextEvents( ) {
     
     const settings = {

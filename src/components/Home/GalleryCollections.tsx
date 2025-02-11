@@ -3,8 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 import Slider from "react-slick";
 import { useEvents } from "@/Providers/EventsProvider";
+import dynamic from 'next/dynamic';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 
+// Importação dinâmica para evitar problemas de SSR
+const Slider = dynamic(() => import('react-slick'), { ssr: false });
 
 export default function GalleryCollections() {
 

@@ -1,7 +1,11 @@
-import Slider from "react-slick";
 import BestSellersCards from "./BestSellersCards";
 import { useProducts } from "@/Providers/ProductsProvider";
+import dynamic from "next/dynamic";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
+// Importação dinâmica para evitar problemas de SSR
+const Slider = dynamic(() => import('react-slick'), { ssr: false });
 
 export default function BestSellers( ) {
   
