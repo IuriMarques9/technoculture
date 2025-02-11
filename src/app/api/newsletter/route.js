@@ -1,7 +1,5 @@
-
 import connectMongoDB from '../../../lib/dbConnect';
 import Newsletter from '../../../Models/Newsletter';
-import { NextResponse } from 'next/server';
 
 
 export async function POST(req) {
@@ -12,9 +10,9 @@ export async function POST(req) {
         
     await Newsletter.create({email});
     
-    return new NextResponse(JSON.stringify({ message: 'Dados recebidos com sucesso!'} ), { status: 201 });
+    return new Response(JSON.stringify({ message: 'Dados recebidos com sucesso!'} ), { status: 201 });
   } catch (error) {
     console.error('Erro ao enviar dados:', error);
-    return NextResponse.json({ message: 'Erro ao enviar dados' }, { status: 500 });
+    return Response.json({ message: 'Erro ao enviar dados' }, { status: 500 });
   }
 }

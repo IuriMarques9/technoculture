@@ -1,5 +1,4 @@
 import connectMongoDB from '../../../lib/dbConnect';
-import { NextResponse } from 'next/server';
 import Events from '../../../Models/Events';
 
 export async function GET() {
@@ -9,9 +8,9 @@ export async function GET() {
         //Find all events
         const data = await Events.find();
 
-        return NextResponse.json(data);
+        return Response.json(data);
     }catch (error) {
         console.error('Erro ao buscar eventos:', error);
-        return NextResponse.json({ message: 'Erro ao buscar eventos' }, { status: 500 });
+        return Response.json({ message: 'Erro ao buscar eventos' }, { status: 500 });
     }
 }
