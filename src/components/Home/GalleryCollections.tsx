@@ -1,7 +1,6 @@
 "use client"
 import Link from "next/link";
 import Image from "next/image";
-import Slider from "react-slick";
 import { useEvents } from "@/Providers/EventsProvider";
 import dynamic from 'next/dynamic';
 import "slick-carousel/slick/slick.css";
