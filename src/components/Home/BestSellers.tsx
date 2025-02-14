@@ -1,49 +1,59 @@
-import BestSellersCards from "./BestSellersCards";
+import BestSellersCards from "./BestSellersCard";
 import { useProducts } from "@/Providers/ProductsProvider";
-import dynamic from "next/dynamic";
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
+import { useEffect, useState } from "react";
 
-// Importação dinâmica para evitar problemas de SSR
-const Slider = dynamic(() => import('react-slick'), { ssr: false });
 
 export default function BestSellers( ) {
-  
-  const settings = {
-    dots: false, // Mostrar os indicadores (bolinhas)
-    infinite: false, // Loop infinito
-    speed: 500, // Velocidade da transição
-    slidesToShow: 3, // Quantidade de slides visíveis
-    responsive: [ // Configurações responsivas
-      {
-        breakpoint: 640, // Breakpoint para telas menores que 640px
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-      {
-        breakpoint: 1024, // Breakpoint para telas menores que 1024px
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-    ],
-    arrows:false,
-    swipe: false, // Desativa o deslizar em dispositivos móveis
-    draggable: false, // Desativa o arrastar em desktops
-  };
 
   const products = useProducts(); //Context Products
   const bestSellers = products.sort((a, b) => b.sales - a.sales).slice(0,3); // Pegar os 3 melhores vendas e ordenar por ordem decrescente
 
-  return bestSellers.length > 0 ? (
-        <Slider {...settings} className="z-30">
+
+  const [windowWidth, setWindowWidth] = useState(0);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth); // Define o limite para mobile
+    
+    };
+      handleResize(); // Chama no carregamento inicial
+      window.addEventListener("resize", handleResize);
+
+      return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+
+
+  if(windowWidth <= 640) {
+    return bestSellers.length > 0 ? (
+      <div className="flex justify-center">
+        <BestSellersCards key={bestSellers[0]._id} product={bestSellers[0]} />
+      </div>
+    ) 
+    :
+    (<p>No Products</p>);
+  } 
+  else if(windowWidth <= 1024){
+    return bestSellers.length > 0 ? (
+      <div className="flex gap-8 justify-evenly">
+        <BestSellersCards key={bestSellers[0]._id} product={bestSellers[0]} />
+        <BestSellersCards key={bestSellers[1]._id} product={bestSellers[1]} />
+      </div>
+    ) 
+    :
+    (<p>No Products</p>);
+  } 
+  else{
+    return bestSellers.length > 0 ? (
+      <div className="flex flex-col md:flex-row gap-8 justify-evenly">
           {
             // Events array
             bestSellers.map((product) => (
               <BestSellersCards key={product._id} product={product} />
             ))
           }
-        </Slider>
-  ) : (<p>No Products</p>);
+      </div>
+    ) 
+    :
+    (<p>No Products</p>);
+  }
 }

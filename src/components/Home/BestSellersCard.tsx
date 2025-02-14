@@ -5,14 +5,14 @@ import Image from "next/image";
 import { useState } from "react";
 import  {Heart} from 'react-feather';
 
-export default function BestSellersCards( {product} : { product: Product } ) {
+export default function BestSellersCard( {product} : { product: Product } ) {
   
     const [colorSelected, setColorSelected] = useState(0);
     
     const { wishlist, toggleWishlist } = useWishlist(); //Pegamos o estado e a função para adicionar ou remover produto da wishlist
-
+        
     return (
-        <div className="mx-auto hover:scale-105 cursor-pointer transition-all duration-200 ease-in-out shadow-[inset_0_0_70px_15px_rgba(38,1,1,1)] border-darkRed border-2 p-3 rounded-lg max-w-[300px] text-start">
+        <div className="hover:scale-105 cursor-pointer transition-all duration-200 ease-in-out shadow-[inset_0_0_70px_15px_rgba(38,1,1,1)] border-darkRed border-2 p-3 rounded-lg max-w-[300px] text-start">
             <Image 
                 src={product.url} 
                 alt={"Imagem"} 

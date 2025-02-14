@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEvents } from "@/Providers/EventsProvider";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
 
 // Importação dinâmica para evitar problemas de SSR
@@ -34,7 +35,6 @@ function CustomPrevArrow(props: { className: string; style: object; onClick: und
 }
 
 export default function NextEvents( ) {
-    
     const settings = {
         dots: true, // Mostrar os indicadores (bolinhas)
         infinite: false, // Loop infinito
@@ -67,6 +67,13 @@ export default function NextEvents( ) {
     const filteredEvents = events.filter((event) => new Date(event.date) >= currentDate); //Filtra os eventos guardando os que são futuros
     const nextEvents = filteredEvents.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()); //Ordena os pelos mais proximos da data atual
     
+    const [mounted, setMounted] = useState(false);// Evita erro de hidratação 
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) return null;
+
 return nextEvents.length > 0 ? (
         <Slider {...settings}>
             {
