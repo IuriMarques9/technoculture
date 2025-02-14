@@ -11,7 +11,7 @@ export default function page() {
     <main>
 
       <section className="h-screen mx-auto w-full text-center px-4">
-        <h1 className="h-full content-center xl:text-8xl">Welcome to the portal of Techno Music</h1>
+        <h1 className="h-full content-center xl:text-7xl">Welcome to the portal of Techno Music</h1>
       </section>
 
       <section className="p-4 bg-[rgba(13,13,13,0.1)] backdrop-blur-sm">
