@@ -8,7 +8,7 @@ export default function GalleryCollectionsCard( {event} : { event: Event } ) {
     
         
     return (
-        <Link key={event.title} className={`hover:brightness-75 transition ease-in-out duration-500 z-50`} href={event.link}>
+        <Link key={event.title} className={`hover:brightness-75 transition ease-in-out duration-500 z-30`} href={event.link}>
             <Image
                 src={event.url}
                 alt={"Event Image"}

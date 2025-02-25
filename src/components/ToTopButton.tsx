@@ -21,8 +21,8 @@ export default function ToTopButton() {
     return (
         
             <button
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className={`${isVisible ? 'opacity-100 hover:scale-125' : 'opacity-10 cursor-default'} text-center p-2 bg-darkRed text-white rounded-full shadow-lg transition-all duration-500 bg-gradient-to-t from-[#8C0303] from-0% via-[#590202] via-50% to-[#260101] to-100% content-center text-lg`}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className={`${isVisible ? 'opacity-100 hover:scale-125' : 'opacity-0 cursor-default'} text-center p-2 bg-darkRed text-white rounded-full shadow-lg transition-all duration-300 bg-gradient-to-t from-[#8C0303] from-0% via-[#590202] via-50% to-[#260101] to-100% content-center text-lg`}
             >
                 
                 <ArrowUp />

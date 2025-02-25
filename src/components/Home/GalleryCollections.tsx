@@ -79,5 +79,4 @@ export default function GalleryCollections() {
 			</>
         ) : (<p>No Event Collections</p>);
         }
-  
   }

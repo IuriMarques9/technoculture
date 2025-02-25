@@ -41,37 +41,6 @@ header{
   background: linear-gradient(to bottom, rgba(38,1,1,1) 0%,rgba(101,2,2,1) 70%,rgba(107,2,2,0.7) 80%,rgba(140,3,3,0) 100%)
 }
 
-/* Loader */
-div#Loader { 
-  background: radial-gradient(circle, #000000 0%, #000000 60%, #1F0000 100%);
-}
-
-/*Costumized ScrollBar*/
-
-  /* width */
-  ::-webkit-scrollbar {
-    width: 3.5px;
-  }
-
-  /* track */
-  ::-webkit-scrollbar-track {
-    background: #260101;
-    margin-block: 7px;
-    border-radius: 20px;
-  }
-
-  /* handle */
-  ::-webkit-scrollbar-thumb {
-    background: #a00303;
-    border-radius: 20px;
-    border: 0.5px solid #260101;
-   }
-
-  /* handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #7a0303;
-  }
-
 /*Titles */
 h1{
   font-size: 3rem;
@@ -101,6 +70,37 @@ h6{
   font-size: 0.75rem;
   letter-spacing: 1px;
 }
+
+/* Loader */
+div#Loader { 
+  background: radial-gradient(circle, #000000 0%, #000000 60%, #1F0000 100%);
+}
+
+/*Costumized ScrollBar*/
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 7px; /*Largura*/
+  }
+
+  /* track */
+  ::-webkit-scrollbar-track {
+    background: #260101;
+    margin-block: 4px;
+    border-radius: 20px;
+  }
+
+  /* handle */
+  ::-webkit-scrollbar-thumb {
+    background: #a00303;
+    border-radius: 20px;
+    border: 2px solid #260101;
+   }
+
+  /* handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #7a0303;
+  }
 
 /*Animations*/
 @keyframes slide-top {
@@ -148,3 +148,6 @@ h6{
     color: white;
     border-left: 20px solid #005f5a;
   }
+
+
+/*Carousel next events*/

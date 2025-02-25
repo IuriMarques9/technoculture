@@ -9,7 +9,7 @@ export default function SocialIcones() {
                 target="_blank"       // Abre em uma nova aba (opcional)
                 rel="noopener noreferrer" // Recomendado por questões de segurança
             >
-                <Facebook size={24} color={'white'} className={`opacity-10 hover:opacity-100 hover:scale-125 hover:stroke-[#3b5998] hover:cursor-pointer transition-all duration-500`}/>
+                <Facebook size={24} color={'white'} className={`opacity-25 hover:opacity-100 hover:scale-125 hover:stroke-[#3b5998] hover:cursor-pointer transition-all duration-250`}/>
             </a>
 
             <a 
@@ -17,7 +17,7 @@ export default function SocialIcones() {
                 target="_blank"       // Abre em uma nova aba (opcional)
                 rel="noopener noreferrer" // Recomendado por questões de segurança
             >
-                <Instagram size={24} color={'white'} className={`opacity-10 hover:opacity-100 hover:scale-125 hover:stroke-[#3f729b] hover:cursor-pointer transition-all duration-500`}/>
+                <Instagram size={24} color={'white'} className={`opacity-25 hover:opacity-100 hover:scale-125 hover:stroke-[#3f729b] hover:cursor-pointer transition-all duration-250`}/>
             </a>
 
             <a 
@@ -25,7 +25,7 @@ export default function SocialIcones() {
                 target="_blank"       // Abre em uma nova aba (opcional)
                 rel="noopener noreferrer" // Recomendado por questões de segurança
             >
-                <Youtube size={24} color={'white'} className={`opacity-10 hover:opacity-100 hover:scale-125 hover:stroke-[#c4302b] hover:cursor-pointer transition-all duration-500`}/>
+                <Youtube size={24} color={'white'} className={`opacity-25 hover:opacity-100 hover:scale-125 hover:stroke-[#c4302b] hover:cursor-pointer transition-all duration-250`}/>
             </a>
         </div>
     );
