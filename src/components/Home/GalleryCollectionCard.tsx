@@ -3,7 +3,7 @@ import { Event } from "@/Interfaces/Event";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function GalleryCollectionsCard( {event} : { event: Event } ) {
+export default function GalleryCollectionCard( {event} : { event: Event } ) {
   
     
         

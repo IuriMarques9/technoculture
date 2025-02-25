@@ -1,7 +1,7 @@
 "use client"
 import { useEvents } from "@/Providers/EventsProvider";
 import { useEffect, useState } from "react";
-import GalleryCollectionsCard from "./GalleryCollectionCard";
+import GalleryCollectionCard from "./GalleryCollectionCard";
 
 export default function GalleryCollections() {
 
@@ -30,7 +30,7 @@ export default function GalleryCollections() {
         return eventCollections.length > 0 ? (
           <>
             <div className="flex justify-center">
-              <GalleryCollectionsCard key={eventCollections[0]._id} event={eventCollections[0]} />
+              <GalleryCollectionCard key={eventCollections[0]._id} event={eventCollections[0]} />
             </div>
 
             <div className="max-w-screen-2xl z-10 shadow-[inset_0_-80px_80px_-70px_rgba(90,2,2,1)] absolute w-[95%] h-full rounded-xl bottom-12 left-2/4 -translate-x-2/4"></div>
@@ -46,8 +46,8 @@ export default function GalleryCollections() {
         return eventCollections.length > 0 ? (
           <>
             <div className="flex gap-16 justify-evenly">
-              <GalleryCollectionsCard key={eventCollections[0]._id} event={eventCollections[0]} />
-              <GalleryCollectionsCard key={eventCollections[1]._id} event={eventCollections[1]} />
+              <GalleryCollectionCard key={eventCollections[0]._id} event={eventCollections[0]} />
+              <GalleryCollectionCard key={eventCollections[1]._id} event={eventCollections[1]} />
             </div>
 
             <div className="max-w-screen-2xl z-10 shadow-[inset_0_-80px_80px_-70px_rgba(90,2,2,1)] absolute w-[95%] h-full rounded-xl bottom-12 left-2/4 -translate-x-2/4"></div>
@@ -66,7 +66,7 @@ export default function GalleryCollections() {
 					{
 						// Events array
 						eventCollections.map((event) => (
-							<GalleryCollectionsCard key={event._id} event={event} />
+							<GalleryCollectionCard key={event._id} event={event} />
 						))
 					}
 				</div>
