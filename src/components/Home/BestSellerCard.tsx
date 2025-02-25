@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import  {Heart} from 'react-feather';
 
-export default function BestSellersCard( {product} : { product: Product } ) {
+export default function BestSellerCard( {product} : { product: Product } ) {
   
     const [colorSelected, setColorSelected] = useState(0);
     

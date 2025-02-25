@@ -1,4 +1,4 @@
-import BestSellersCards from "./BestSellersCard";
+import BestSellersCards from "./BestSellerCard";
 import { useProducts } from "@/Providers/ProductsProvider";
 import { useEffect, useState } from "react";
 
