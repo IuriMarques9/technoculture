@@ -1,5 +1,4 @@
-import Link from "next/link";
-import Image from "next/image";
+"use client"
 import { useEvents } from "@/Providers/EventsProvider";
 import NextEventCard from "./NextEventCard";
 import { useEffect, useState } from "react";
@@ -26,7 +25,7 @@ export default function NextEvents( ) {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    
+
 return nextEvents.length > 0 ? (
         <>
             <div className="flex justify-evenly gap-16">
